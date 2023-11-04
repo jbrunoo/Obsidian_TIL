@@ -42,3 +42,19 @@ view or 작업 수행한 API 상관없이 데이터를 표시하는 activity, fr
 	screens, activities, fragments, navigation 대상의 경우, 
 	viewModel 인스턴스는 일반적으로 기본 상태 홀더 
 
+요약 : Data Layer -> ViewModel (current app data)
+	viewModel -> UI Elements (current UI state)
+	UI Elements -> viewModel (Ul events)
+	viewModel -> Data Layer (viewModel notifies state change)
+	Data Layer (persists the data changes and updates the application data)
+	Data Layer -> viewModel (new app data)
+	viewModel -> Data Layer (new UI state)
+
+UI 상태가 변경 되었음을 어떻게 알 수 있는지?
+=> 관찰 가능한 데이터(stateflow or livedata 같은 관찰 가능한 데이터 홀더에 노출되어야 함)
+이를 통해  UI는 viewModel에서 데이터를 수동으로 가져오지 않고도 상태의 모든 변경 사항에 반응 가능.
+
+viewModel을 쓰는 정확한 이유.
+activity 수명 주기와 구성 변경과 관련된 수명 주기 문제에서 구성 변경 시 rememberSaveable 사용하거나 인스턴스 상태를 저장하는 등 다양한 방법으로 앱 데이터 저장할 수 있음.
+대부분 `rememberSaveable`로 사용가능하나 composable 함수 내 또는 근처에 로직을 유지해야 함.
+즉, 앱이 성장하면 데이터와 로직을 composable 함수와 분리해야 하기에.
