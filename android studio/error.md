@@ -43,3 +43,5 @@ dependency 간 충돌이 문제인 듯. 특히, org 적힌 라이브러리들. �
 2.  implementation("com.example:your-dependency:version") { exclude(group = "com.intellij", module = "annotations") } 추가하기 
 
 3. **File -> 'Invalidate Caches and Restart' Click** 캐시 삭제 중.
+
+4. 필요없는 라이브러리 삭제하고 결국 추가했던 라이브러리 지우고 자동으로 라이브러리 추가하는 기능 씀. (tensorflow lite에서 라이브러리 복붙했다가..)
