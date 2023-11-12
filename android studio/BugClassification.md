@@ -14,7 +14,8 @@ java.lang.IllegalStateException: Internal error: Unexpected failure when prepari
 
 
 
-3일차 
+3일차
+tflite 해결하기
 ktor?
 서버 구현 해보기 
 서버에서 모델 돌리기
