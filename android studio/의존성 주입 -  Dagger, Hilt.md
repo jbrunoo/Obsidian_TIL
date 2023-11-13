@@ -1,5 +1,6 @@
 [유튜브 참고](https://www.youtube.com/watch?v=wZn-zpwvxCU)
-
+[의존성 주입 공식문서](https://developer.android.com/training/dependency-injection?hl=ko)
+[Hilt 문서](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko)
 # 의존성 주입
 
 의존 - A클래스 안에서 B클래스 객체를 생성해서 사용한다 그럼 A는 B에 의존
@@ -117,3 +118,5 @@ Component - Module이 생성한 객체를 Inject에 주입.(android component와
 activity나 fragment에서 viewModel을 주입받을 때, activity ktx, fragment ktx 기능으로 (?)
 
 사용 방법 따로 익히기.
+
+
