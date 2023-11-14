@@ -107,4 +107,24 @@ fun Navigator (navController: NavHostController,
 From any of your composables you can navigate to another with this.
 navController.navigate(Screens.Page3.route)
 ```
+`
+
+## 데이터 값 넘기기 [블로그 참고함](https://velog.io/@zinkiki/AndroidCompose-navigation%EB%84%A4%EB%B9%84%EA%B2%8C%EC%9D%B4%EC%85%98-%EA%B5%AC%ED%98%84)
+
+기본 자료형과 참조 자료형 넘기는 방식 다름
+```Kotlin
+```kotlin
+// 기본자료형 전달
+        composable(NAV_ROUTE.PAGE1.routeName/{data}", arguments = listOf(navArgument("data"){type = NavType.IntType})){
+        	Page2(data)
+        }
+        
+        // 참조자료형 전달
+        composable(NAV_ROUTE.PAGE2.routeName){
+        	val data = remember {
+                navController.previousBackStackEntry?.savedStateHandle?.get<TestData>("data")
+            }
+        	Page3(data)
+        }
 ```
+
