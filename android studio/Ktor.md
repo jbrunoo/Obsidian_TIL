@@ -21,3 +21,11 @@ End-to-End 간 multiplatform application framework을 지원하는 게 최종 �
 - 관리
 
 
+[ktor-object-detection](https://blog.jetbrains.com/kotlin/2022/01/object-detection-with-kotlindl-and-ktor/)
+
+ktor을 통해 client, server 둘 다 가능.
+
+현 프로젝트는 server는 ktor client는 okhttp로 구성 중 (gpt를 따라..)
+
+[KInference](https://github.com/JetBrains-Research/kinference)
+
