@@ -26,3 +26,64 @@ settings -> editor -> General -> Console의 Default Encoding을 UTF-8로 만들�
 그런 작업을 기술하는 것 라우터
 
 라우터가 허용하는 methods (기본값 GET)
+
+
+[openvino 예제 코드](https://da2so.tistory.com/64?category=1077352)
+
+```python
+import cv2  
+import numpy as np  
+from flask import Flask, request, jsonify  
+from openvino import Core  
+from scipy.special import softmax
+  
+app = Flask(__name__)  
+  
+model_xml = "model.xml"  
+model_bin = "model.bin"  
+ie = Core()  
+net = ie.read_model(model=model_xml, weights=model_bin)  
+exec_net = ie.compile_model(model=net, device_name="CPU")  
+image = cv2.imread("ant8.jpeg")  
+image = cv2.resize(image, (224, 224))  
+  
+# 모델에 전달할 입력 형태로 변환 (batch_size=1 추가)  
+input_blob = image.transpose((2, 0, 1)).reshape(1, 3, 224, 224)  
+  
+@app.route('/')  
+def model():  
+    try:  
+        # Get image from Android Studio  
+        # image = request.files["image"].read()  
+  
+        output_layer = next(iter(exec_net.outputs))  
+  
+        result = exec_net([input_blob])[output_layer]  
+  
+        logits = result[0]  
+        probabilities = softmax(logits, axis=0)  
+  
+        # 최대 확률 값과 해당 클래스 인덱스 찾기  
+        max_prob = np.max(probabilities)  
+        predicted_class = np.argmax(probabilities)  
+  
+        print("확률:", probabilities)  
+        print("최대 확률:", max_prob)  
+        print("예측된 클래스:", predicted_class)  
+  
+        return jsonify({"predicted_class": predicted_class, "confidence": float(max_prob)})  
+  
+        print(result)  
+        return jsonify({"result": result})  
+  
+  
+  
+    except Exception as e:  
+        return jsonify({"error": str(e)})  
+  
+  
+if __name__ == '__main__':  
+    app.run(debug=True)
+```
+
+일단 이미지를 서버에 넣어두고 결과 값을 어떻게 가져오는지 정확도를 뽑아올 수 있을지 보고 있음.
