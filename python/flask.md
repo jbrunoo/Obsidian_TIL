@@ -87,3 +87,60 @@ if __name__ == '__main__':
 ```
 
 일단 이미지를 서버에 넣어두고 결과 값을 어떻게 가져오는지 정확도를 뽑아올 수 있을지 보고 있음.
+
+ver2
+```python
+import cv2  
+import numpy as np  
+from flask import Flask, request, jsonify  
+from openvino import Core  
+from scipy.special import softmax  
+  
+app = Flask(__name__)  
+  
+model_xml = "model.xml"  
+model_bin = "model.bin"  
+ie = Core()  
+net = ie.read_model(model=model_xml, weights=model_bin)  
+exec_net = ie.compile_model(model=net, device_name="CPU")  
+print("ddddddddddddd")  
+labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"]  
+  
+@app.route('/predict', methods=["POST"])  
+def predict():  
+    print("Prediction endpoint called.")  
+    try:  
+        # Get image from Android Studio  
+        img = request.files['img']  
+        img.save("static/img/img.jpeg")  
+        image = cv2.imread("static\\img\\img.jpeg")  
+        # image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  
+        image = cv2.resize(image, (224, 224))  
+        input_blob = image.transpose((2, 0, 1)).reshape(1, 3, 224, 224)  
+  
+        output_layer = next(iter(exec_net.outputs))  
+  
+        result = exec_net([input_blob])[output_layer]  
+  
+        logits = result[0]  
+        probabilities = softmax(logits, axis=0)  
+  
+        # 최대 확률 값과 해당 클래스 인덱스 찾기  
+        max_prob = np.max(probabilities)  
+        predicted_class = int(np.argmax(probabilities))  
+  
+        print("확률:", probabilities)  
+        print("최대 확률:", int(max_prob) * 100)  
+        print("예측된 클래스:", predicted_class)  
+  
+        return jsonify({"predicted_class": labels[predicted_class]}, {"confidence": float(max_prob)})  
+  
+    except Exception as e:  
+        print("에러:", str(e))  
+        return jsonify({"error": str(e)})  
+  
+  
+if __name__ == '__main__':  
+    app.run(host='192.168.1.53', port=5000, debug=True)
+```
+

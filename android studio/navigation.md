@@ -128,3 +128,7 @@ navController.navigate(Screens.Page3.route)
         }
 ```
 
+
+[여러 값 넘기기](https://workspace-dev.medium.com/navigation-compose%EC%97%90%EC%84%9C-argument%EB%A1%9C-bundle%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-beb119d5500b)
+1. bundle 사용.
+	`@Parcelize`는 Android에서 Kotlin 데이터 클래스에 대한 Parcelable 구현을 자동으로 생성하기 위한 어노테이션입니다. Parcelable은 안드로이드에서 객체를 전달할 때 사용되는 인터페이스로, 데이터 클래스를 Parcelable로 만들면 Intent나 Bundle 등을 통해 객체를 손쉽게 전달할 수 있게 됩니다.
