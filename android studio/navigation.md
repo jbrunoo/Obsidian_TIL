@@ -129,6 +129,17 @@ navController.navigate(Screens.Page3.route)
 ```
 
 
-[여러 값 넘기기](https://workspace-dev.medium.com/navigation-compose%EC%97%90%EC%84%9C-argument%EB%A1%9C-bundle%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-beb119d5500b)
+### [여러 값 넘기기](https://workspace-dev.medium.com/navigation-compose%EC%97%90%EC%84%9C-argument%EB%A1%9C-bundle%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-beb119d5500b)
 1. bundle 사용.
 	`@Parcelize`는 Android에서 Kotlin 데이터 클래스에 대한 Parcelable 구현을 자동으로 생성하기 위한 어노테이션입니다. Parcelable은 안드로이드에서 객체를 전달할 때 사용되는 인터페이스로, 데이터 클래스를 Parcelable로 만들면 Intent나 Bundle 등을 통해 객체를 손쉽게 전달할 수 있게 됩니다.
+
+[공식문서](https://developer.android.com/guide/navigation/navigation-pass-data?hl=ko) -> compose는 아님.
+경로, 딥 링크 및 인수가 포함된 URI를 문자열에서 파싱할 수 있습니다. 위의 표에서 보는 바와 같이 Parcelable 및 Serializable과 같은 맞춤 데이터 유형은 사용할 수 없습니다. 맞춤 복합 데이터를 전달하려면 ViewModel 또는 데이터베이스와 같은 다른 위치에 데이터를 저장하고 탐색 중에 식별자만 전달한 다음 탐색이 완료된 후 새로운 위치에서 데이터를 회수합니다.
+
+**주의:** 인수를 통해 복잡한 데이터 구조를 전달하는 것은 안티패턴으로 간주됩니다. 각 대상은 항목 ID와 같이 필요한 최소 정보를 기반으로 UI 데이터 로드를 담당해야 합니다. 이를 통해 프로세스 재생성이 간소화되고 잠재적 데이터 불일치가 방지됩니다.
+
+
+앞으로는 값을 넘기는거보다 db에 저장하고 빼서 쓰는 방식으로 구현해야 될듯하다.
+
+[공식문서 navigation in compose](https://developer.android.com/jetpack/compose/navigation?hl=ko)
+
