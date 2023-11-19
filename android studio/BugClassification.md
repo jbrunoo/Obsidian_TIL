@@ -17,5 +17,15 @@ java.lang.IllegalStateException: Internal error: Unexpected failure when prepari
 
 
 3일차
-tflite 해결하기
-ui 꾸미기 색상 적용
+서버 이용해서 띄움
+1. cmd ipconfig의 ipv4 주소가 로컬 주소다.
+2. app manifest - xml파일, 서버 주소, app 안에 api class 주소 다 같이 바뀌어야 함.
+
+
+4일차
+navigation stack관리 화면 쌓임. 바텀 app bar 통해서 navigate 되는 것은 어떻게 관리할지.
+viewModel(savedStateHandle) 통해서 서버 값 받아서 정확도와 결과 값 다른 화면에 뿌려줌. 
+값을 두 화면에서 쓰고 있어서 초기화되지 않음. 생명주기가 끝까지 감. 불필요해 보임.
+
+5일차
+db 어떻게 할지, local DB room 쓰려고 생각.
