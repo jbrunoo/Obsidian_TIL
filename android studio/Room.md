@@ -8,3 +8,5 @@
 어떤 데이터를 관리할 건지 (2) Entity를 정의 
 마지막으로 Database의 데이터를 접근하기 위한 (3) Data Access Object (Dao)를 구현
 
+[DB relationship with Room](http://batmask.net/index.php/2021/05/15/938/)
+
