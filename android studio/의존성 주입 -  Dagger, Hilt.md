@@ -120,3 +120,9 @@ activity나 fragment에서 viewModel을 주입받을 때, activity ktx, fragment
 사용 방법 따로 익히기.
 
 
+
+# dagger hilt - compose에서 적용
+
+[유튜브](https://www.youtube.com/watch?v=bbMsuI2p1DQ)
+
+![[Pasted image 20231123123625.png]]
