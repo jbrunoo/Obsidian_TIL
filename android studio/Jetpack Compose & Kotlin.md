@@ -94,3 +94,5 @@ ps. 물론 내 코드에서 저렇게 쓰지 않고 다른 방법은 있을 듯.
  
 [3번](https://developer.android.com/jetpack/compose/layouts/insets?hl=ko)
 	windowInsets keyword 활용.
+
+[compose 창 인셋](https://developer.android.com/jetpack/compose/layouts/insets?hl=ko)
