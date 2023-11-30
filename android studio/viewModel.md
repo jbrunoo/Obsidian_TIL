@@ -7,7 +7,7 @@ navigation과 viewModel
 
 [viewModel 공식 문서](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=ko#kotlin_1)
 
-kotlin 식
+kotlin xml 식
 ```
 val viewModel: DiceRollViewModel by viewModels()
 ```

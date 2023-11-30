@@ -34,5 +34,21 @@
 
 
 ### supabase kotlin 
-[github](https://github.com/supabase-community/supabase-kt) [document](https://supabase.com/docs/reference/kotlin/installing)
+[github](https://github.com/supabase-community/supabase-kt) 
+[document](https://supabase.com/docs/reference/kotlin/installing) - 여기서 모듈 눌러서 각각 모듈의 노트 열어서 파라미터 볼 수 있음.
+auth 위해서 GoTrue 모듈 써야 함(?) 필수인지는 모르겠음.
+안드로이드 & ios는 딥링크를 구성하라는데 무슨 말인지 이해가 완전히 안됨.
+```
+**Android & IOS:**
+
+`scheme` - The scheme for the redirect url, when using deep linking. Default: `supabase`
+
+`host` - The host for the redirect url, when using deep linking. Default: `login`
+
+**Android:**
+
+`enableLifecycleCallbacks` - Whether to stop auto-refresh on focus loss, and resume it on focus again. Default: `true`
+```
+
+
 
