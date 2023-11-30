@@ -31,3 +31,8 @@
  - F : Firebase는 Google이 소유한 프로프리어터리 플랫폼.
  - S : Supabase는 오픈 소스이며 원하는 경우 자체 호스팅할 수 있음.
 
+
+
+### supabase kotlin 
+[github](https://github.com/supabase-community/supabase-kt) [document](https://supabase.com/docs/reference/kotlin/installing)
+
