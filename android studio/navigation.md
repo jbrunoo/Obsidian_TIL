@@ -143,3 +143,15 @@ navController.navigate(Screens.Page3.route)
 
 [공식문서 navigation in compose](https://developer.android.com/jetpack/compose/navigation?hl=ko)
 
+
+
+예전에 강사님이 적어줬던 코드
+```
+NavHost( navController = navController, startDestination = MainDestination.InputScreen.route ) { composable(MainDestination.InputScreen.route) { InputInfo(navController) } composable(MainDestination.UserScreen.route) { backStackEntry -> UserInfo( navController = navController, name = (backStackEntry.arguments?.getString("name") ?: "") ) } }
+
+// sealed class안에서 함수
+sealed class MainDestination(val route: String) { object InputScreen : MainDestination("inputInfo") { fun actionToUserScreen(name: String): String { return when { name.isEmpty() -> throw Exception("check name is not empty") else -> "userInfo/$name" } } } object UserScreen : MainDestination("userInfo/{name}") }
+```
+
+ps. [why use sealed class?](https://stackoverflow.com/questions/69686087/why-use-sealed-class-and-make-object-in-navigation-kotlin-jetpack-compose) 
+
