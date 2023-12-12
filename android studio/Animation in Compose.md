@@ -192,3 +192,8 @@ ScreenContents(
 
 절반 들었음. 정리해야함. 뒷부분. 12:00 분 부터 fling gesture handling
 ### 3. HOW?
+
+[공식문서1-animation](https://developer.android.com/jetpack/compose/animation?hl=ko)
+[공식문서2-animation customizing](https://developer.android.com/jetpack/compose/animation/customize?hl=ko)
+
+
