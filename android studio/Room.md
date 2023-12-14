@@ -1,3 +1,5 @@
+Android Studio에서 Database 값 확인하기 // view -> Tool Windows -> App Inspection
+
 3가지 구성요소
 - Database Class : 데이터 연결을 위한 기본 엑세스 포인트 역할
 - Entitiy : 데이터베이스 테이블
