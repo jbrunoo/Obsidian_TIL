@@ -34,3 +34,8 @@ Messages는 Assistant와 사용자 간의 대화의 구성 요소입니다. 각 
 앱에서는 각 Thread에 대한 대화창을 구성하여 사용자와 Assistant 간의 대화를 나눌 수 있습니다. 각 Thread에는 해당하는 대화창이 있고, 각 메시지의 Role을 통해 User와 Assistant의 메시지를 구분할 수 있습니다. 사용자와 Assistant 간의 대화를 시각적으로 나누기 위해 UI에서는 Role에 따라 다른 스타일이나 색상을 사용할 수 있습니다.
 
 대화창을 표시할 때는 Thread와 해당하는 Messages를 사용하여 구성하고, User와 Assistant의 메시지를 구분하여 표시하면 됩니다. 예를 들어, User 메시지는 한 색상, Assistant 메시지는 다른 색상 등을 사용하여 시각적으로 구분할 수 있습니다.
+
+
+open ai에서 각 유저당 thread id 하나씩 부여하기를 권장함.
+thread id를 통해 thread 삭제 개념이 있음.
+assistant는 웹 상에서 삭제 가능함. thread는 관리하다 사용자가 대화창 삭제하면 db에서 thread id 삭제 겸 thread id를 통해 thread도 같이 삭제해 주어야 함.
