@@ -52,3 +52,11 @@ Mainifest.xml - 오디오 사용 권한 줘야함
 디지털 잉크 인식
 [https://developers.google.com/ml-kit/vision/digital-ink-recognition/android?hl=ko](https://developers.google.com/ml-kit/vision/digital-ink-recognition/android?hl=ko)
 
+
+
+
+firebase auth
+구글 원탭 ui - 로그인 취소 연속 시 24시간 block
+[해결방안](https://developers.google.com/identity/one-tap/android/get-saved-credentials?hl=ko#disable-one-tap) 1. google play services 저장용량 삭제 2. 테스터 기기, 에뮬레이터 에서 다이얼러 앱으로 이동하여 \*#\*#66382723#\*#\* 입력하여 쿨다운 중지 및 다시 입력하면 재사용 설정.
+(직접 본인 폰으로 하고 있어서 구글 다이얼러 play store에 검색해서 구글 전화 설치한 다음 코드쳐서 쿨다운 풀었음)
+
