@@ -155,3 +155,44 @@ sealed class MainDestination(val route: String) { object InputScreen : MainDesti
 
 ps. [why use sealed class?](https://stackoverflow.com/questions/69686087/why-use-sealed-class-and-make-object-in-navigation-kotlin-jetpack-compose) 
 
+
+
+- bottom navigation bar
+[blog](https://velog.io/@chuu1019/Android-Jetpack-Compose-Bottom-Navigation-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+material은 BottomNavigation
+material3는 BottomAppBar
+
+```kotlin
+@Composable  
+fun BottomNavigationBar(navController: NavHostController) {  
+//이동 경로 items 설정
+    val items = listOf(  
+        BottomNavItem.Friends,  
+        BottomNavItem.Chat,  
+        BottomNavItem.Shop,  
+        BottomNavItem.Others  
+    )  
+    BottomAppBar(  
+        containerColor = Color(0xFFE0E0E0),  
+        contentColor = Color.Black  
+    ) {  
+    // 현재 route 가져오기
+        val navBackStackEntry by navController.currentBackStackEntryAsState()  
+        val currentDestination = navBackStackEntry?.destination?.route  
+        items.forEach { screen ->  
+            BottomNavigationItem(  
+                icon = { Icon(screen.icon, contentDescription = screen.title) },  
+                label = { Text(screen.title, fontSize = 12.sp) },  
+                selected = currentDestination == screen.route,
+                selectedContentColor = Color.Yellow,  
+                onClick = {  
+                    navController.navigate(screen.route) {  
+                    // 상태 저장을 통해 같은 icon은 이전에 저장한 값으로 recomsition 방지
+                        popUpTo(navController.graph.startDestinationId) { saveState = true }  
+                        launchSingleTop = true  
+                        restoreState = true  
+                    }  
+                }            )  
+        }  
+    }}
+```
