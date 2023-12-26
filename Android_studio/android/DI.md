@@ -126,3 +126,35 @@ activity나 fragment에서 viewModel을 주입받을 때, activity ktx, fragment
 [유튜브](https://www.youtube.com/watch?v=bbMsuI2p1DQ)
 
 ![[Pasted image 20231123123625.png]]
+
+  
+의존성 주입(Dependency Injection)은 소프트웨어 디자인 패턴 중 하나로, 클래스가 직접 자신의 의존성을 생성하지 않고 외부에서 주입받는 것을 말합니다. 안드로이드에서는 Hilt와 같은 의존성 주입 프레임워크를 사용하여 이를 구현할 수 있습니다.
+
+여기서 "의존성"이란 다른 클래스나 모듈에 대한 의존 관계를 의미합니다. 예를 들어, 클래스 A가 클래스 B에 의존한다면, A는 B의 기능이나 객체를 사용하거나 확장하는 것입니다.
+
+의존성 주입은 주로 세 가지 형태로 나타납니다:
+
+1. **생성자 주입(Constructor Injection):** 클래스의 생성자를 통해 의존성을 주입하는 방식입니다. 클래스가 인스턴스화될 때 외부에서 필요한 의존성을 전달받습니다. Hilt에서는 `@Inject` 어노테이션을 사용하여 생성자에 주입할 의존성을 표시합니다.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 생성자 주입 class MyClass @Inject constructor(private val dependency: Dependency) {     // ... }`
+    
+2. **메소드 주입(Method Injection):** 클래스의 메소드를 통해 의존성을 주입하는 방식입니다. 특정 메소드에 의존성을 전달받아 사용합니다.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 메소드 주입 class MyClass {     @Inject     fun setDependency(dependency: Dependency) {         // ...     } }`
+    
+3. **필드 주입(Field Injection):** 클래스의 필드를 통해 의존성을 주입하는 방식입니다. 클래스의 필드에 `@Inject` 어노테이션을 사용하여 주입할 의존성을 표시합니다.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 필드 주입 class MyClass {     @Inject     private lateinit var dependency: Dependency }`
+    
+
+Hilt를 사용하면 앱의 구성 요소에 대한 의존성을 자동으로 주입할 수 있습니다. 예를 들어, Android에서는 액티비티, 프래그먼트, 서비스 등의 구성 요소에 대한 의존성을 주입할 수 있습니다.
+
+이러한 의존성 주입은 코드의 유지보수성을 향상시키고 테스트 가능한 코드를 작성하는 데 도움이 됩니다. 또한 객체 간의 결합도를 낮춰 시스템을 확장하거나 변경하기 쉽게 만듭니다.
+
+
