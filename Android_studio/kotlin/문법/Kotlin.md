@@ -23,3 +23,5 @@ ex) 초기화 과정에서 리소스를 많이 잡아먹거나 객체를 사용�
 익명 함수
 참조 함수
 
+
+slice, slicearray, minornull, minbyornull, filter, map 정리
