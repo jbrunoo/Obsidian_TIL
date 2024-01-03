@@ -30,4 +30,15 @@ fold 쓰는 것 권장.
 2. ```val doubledSumFromZero = numbers.fold(0) { total, num -> total + num * 2 }``` 같은 연산에서 reduce는 total에 첫 번째 요소가 fold는 0이 들어가기 때문에 원하는 연산은 fold만 나옴.
 
 
-컬렉션 부분 검색 [공식문서](https://kotlinlang.org/docs/collection-parts.html)
+컬렉션 부분 검색 - [공식문서](https://kotlinlang.org/docs/collection-parts.html)
+Slice, Take and Drop, Chunked, Windowed
+
+Chunked(n) : 단일 인자로 chunk size를 주면 주어진 사이즈의 list를 반환.
+```kotlin
+val numbers = (0..13).toList()
+println(numbers.chunked(3))
+// [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10, 11], [12, 13]]
+
+println(numbers.chunked(3) { it.sum() })  // `it` is a chunk of the original collection
+// [3, 12, 21, 30, 25]
+```
