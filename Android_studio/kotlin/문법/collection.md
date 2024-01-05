@@ -2,7 +2,7 @@ list, set, map 등
 
 
 collection 함수
-sum(), multiple()
+sum(), multiple()(?)
 sumBy {}
 sumOf {} : kotlin 1.4 ? 이후 sumByDouble 등 int, long, double에 대한 각각 연산을 오버로딩해서 한꺼번에 수행 가능함. 성능은 비슷.
 
@@ -16,7 +16,7 @@ any는 조건에 만족하는 요소가 하나라도 있는지 true, flase 반�
 
 
 
-reduce, fold : 컬렉션 요소를 누적해서 더하여 반환하는 함수
+reduce, fold : 컬렉션 요소를 누적해서 연산하여 반환하는 함수. 즉, 누산기. 
 차이 : 초기 값(첫 번째 요소 / 파라미터), 반환 값(컬렉션 자료형 / 초기 값의 자료형)
 ```kotlin
 public inline fun <S, T : S> Iterable<T>.reduce(
@@ -31,6 +31,7 @@ public inline fun <T, R> Iterable<T>.fold(
 fold 쓰는 것 권장.
 1. emptyList의 경우 reduce는 exception 발생 - UnsupportedOperationException
 2. ```val doubledSumFromZero = numbers.fold(0) { total, num -> total + num * 2 }``` 같은 연산에서 reduce는 total에 첫 번째 요소가 fold는 0이 들어가기 때문에 원하는 연산은 fold만 나옴.
+3. 인자 값 명 추천. total num이나 acc(accumulator), element || next
 
 
 컬렉션 부분 검색 - [공식문서](https://kotlinlang.org/docs/collection-parts.html)
