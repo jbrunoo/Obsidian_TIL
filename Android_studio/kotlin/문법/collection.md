@@ -60,5 +60,7 @@ println(numbers.chunked(3) { it.sum() })  // `it` is a chunk of the original col
 ```
 
 
+groupBy, groupingBy (eachCount)
+
 [BuildList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/build-list.html#kotlin.collections$buildList(kotlin.Int,%20kotlin.Function1((kotlin.collections.MutableList((kotlin.collections.buildList.E))
 
