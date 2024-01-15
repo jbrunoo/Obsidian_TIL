@@ -1,9 +1,11 @@
 
 [공식 유튜브](https://www.youtube.com/watch?v=B7D3G6tC9n0)
+[공식 블로그 문서](https://android-developers.googleblog.com/2021/10/compose-for-wear-os-now-in-developer.html)
 
 화면 구성
 Overlay - 모바일과 동일
 Notification - 모바일과 동일
++widget
 Compliation - 워치 페이스에서 바로 눈으로 정보를 확인 가능, 화면 누르면 해당 앱 환경으로 이동, 독립적인 액션도 수행 가능
 Tile - 정보와 액션에 빠르게 엑세스 가능, 워치 페이스에서 좌우로 화면 쓸면 됨.
 
@@ -11,3 +13,33 @@ Tile - 정보와 액션에 빠르게 엑세스 가능, 워치 페이스에서 �
 기본 종속성 세트 차이
 모바일 : Material, Foundation, UI, Runtime, Compiler, Navigation, Animation 
 wear os : 대부분 동일, Material Wear, Wear Foundation, Wear Navigation 
+
+
+Wear OS Material
+- Buttons
+- Cards
+	Default는 text 기반
+	AppCard, TitleCard
+- Chips, Toggle Chips
+	빠른 원탭 액션 용이라 모바일보다 wear os나 작은 기기에 적합.
+- Curved Text & Time Text
+	timeText는 화면 위에 시간 표시할 것 권장. (wear scaffold에서 대신 처리해줌)
+- Lists
+	ScalingLazyColumn으로 확장 + 투명성.
+- Box
+	SwipeToDismissBox 화면 쓸어서 닫음. wear os 의 메인 제스쳐
+- Scaffold
+	timeText
+	vignette(비네트, 화면 주변에 적용) - vignettePosition을 설정하면 됨.
+	positionIndicator(스크롤 표시, 아래의 컴포저블에서 어느 위치에 있는지) - 화면의 곡률 때문에 필요 
+	content
+
+	Scaffold Design
+	APP - MaterialTheme - Scaffold - Content
+	모바일과 같음. theme 아래, content 위.
+	
+	Scaffold와 ScalingLazyColumn을 함께 쓰면 list의 상태를 hoisting 하여 positionIndicator를 지원.
+	스크롤 표시가 화면 옆쪽에 있게 되면 content로 인해 잘리면 안되고 스크롤 상태([[state]]) 확인하여 스크롤 할 때는 timeText를 없애서 화면 공간을 더 확보할 수도 있음.
+
+- Navigation
+	APP - MaterialTheme - Scaffold - SwipeDismissableNavHost - Content

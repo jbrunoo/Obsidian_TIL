@@ -1,4 +1,5 @@
 
+### 1번째 viewModel 고찰
 ViewModelFactory는 ViewModel을 단일 객체로 생성해 사용하기 위해(= 싱글톤 패턴이라나) 구현하는 클래스
 
 
@@ -21,8 +22,9 @@ viewModel: DiceRollViewModel = viewModel()
 ```
 
 
+### 2번째 viewModel 고찰
 단순히 누가 어떤 언어를 사용해서 개발했는지에 따라 위와 같이 차이점을 예전에 나누어 두었음..
-다시 한 번 viewmodel에 대해 찾아보며 viewmodel을 보통 3가지 의미로 나누는 것 같다.
+다시 한 번 viewmodel에 대해 찾아보며 viewmodel을 3가지 의미로 나누어 보았다.
 
 1. MVVM ViewModel
 2. AAC ViewModel
@@ -42,6 +44,16 @@ viewModel: DiceRollViewModel = viewModel()
 셋째, Compose ViewModel은 개념적으로 다른 것은 없고 compose로만 배웠기 때문에 헷갈렸던 것인데 AAC ViewModel을 Compose용으로 만들었다고 생각하면 될 것 같다. 초기화 방식도 기존, viewModelProvider 같은 부분에서 간소화 되고 compose에 특화되지 않았을까 생각한다.
 
 
+
+### 3번째 viewModel 고찰 (개발자님께 질문 예정)
 [MVVM with Grab Architecture](https://tv.naver.com/v/4637223?playlistNo=272653)
 [깃헙예제](https://github1s.com/skydoves/DisneyCompose/blob/main/app/src/main/java/com/skydoves/disneycompose/ui/main/MainActivity.kt)
 [코드랩](https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects?hl=ko&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dko%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-advanced-state-side-effects#4)
+
+1번째 강의를 듣고 많은 생각이 바뀜. 
+일단 mvvm은 마이크로소프트에서 언급한 개념. 구글에서 viewModel과 함께 문서에는 mvvm을 찾아볼 수 없음. 즉 상태 홀더로써의 기능을 중시하는 것 같음.
+구현할 수 있다고 여러 블로그에서 얘기하는데 강연자의 말에 따르면 viewmodel안에 livedata를 observe로 보는 코드 - 이렇게 짜면 결합성이 너무 높다. mvvm에서 벗어난다고 언급.
+
+하지만 5년전 강의다 보니 xml과 databinding을 이용하고 지금 AAC viewModel에 바뀐 부분이 있는지 알 수 없었다. Compose는 어떤 식인지 궁금해서 skydoves님의 mvvm 예제 코드를 살펴보았음. 따로 compose에서 databinding의 역할을 하는 부분을 찾지 못함. 그래서 아마 AAC의 viewModel과 DI를 함께 쓰는 이유가 있지 않을까 생각해서 개발자님께 질문 예정.
+
+

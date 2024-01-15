@@ -149,3 +149,5 @@ run2 = wait_on_run(run2, thread1)
 pretty_print(get_response(thread1))
 ```
 
+하지만 서버에 사용자의 입력을 보내고 gpt의 답을 다시 안스에 받아오는 과정이 더 느릴 것으로 판단 + local 서버라 와이파이 동일해야하고 노트북 계속 켜두어야 해서 오픈소스 api([openai-kotlin](https://github.com/aallam/openai-kotlin))를 통해 api 통신으로 구현하였음.
+

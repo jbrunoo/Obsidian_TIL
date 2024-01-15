@@ -26,7 +26,7 @@ viewModel이 데이터를 홀드해서 memory leak 가능성 배제
 (view가 직접 model에 접근하지 않아 activity, fragment lifecycle에 의존하지 않으므로)
 기능별 모듈화 - 유지보수 용이(viewModel 재사용, DB 교체 등)
 
-MVVM 패턴을 간편하게 적용하기 위해 구글에서 AAC 제공
+MVVM 패턴을 간편하게 적용하기 위해 구글에서 AAC 제공(잘못 얻은 정보라는 것을 [[viewModel]] 공부하면서 배움.)
 (Android Architecture Component)
 
 ![[Pasted image 20231031091557.png]]
