@@ -43,3 +43,17 @@ Wear OS Material
 
 - Navigation
 	APP - MaterialTheme - Scaffold - SwipeDismissableNavHost - Content
+
+
+
+실 기기 연결 [디버깅](https://developer.android.com/training/wearables/apps/debugging?hl=ko)
+android studio에서 Wear OS를 실행해보기 위해 여러가지 방법이 있다.
+1. 에뮬레이터는 현재 노트북이 bios에서 가상화 사용을 못찾아서 에뮬레이터 실행이 안됨..
+	실제 기기가 있어서 다행
+2. USB 포트로 유선 연결.(갤럭시 워치 4에 유선 단자는 없다.)  
+3. wifi 이용. 
+4. 블루투스 이용.
+
+wifi와 블루투스 이용을 위해 adb 명령어를 사용하는데 공식문서에는 사용방법만 나와 있음.
+일단 adb란 Android Debug Bridge(ADB)로 기기와 통신할 수 있는 다목적 명령줄 도구로 android SDK Flatform 도구 패키지에 포함되어 있다고 함. [adb 문서](https://developer.android.com/studio/command-line/adb?hl=ko)에서 다운 받을 수 있음.
+
