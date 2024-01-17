@@ -55,5 +55,34 @@ android studio에서 Wear OS를 실행해보기 위해 여러가지 방법이 �
 4. 블루투스 이용.
 
 wifi와 블루투스 이용을 위해 adb 명령어를 사용하는데 공식문서에는 사용방법만 나와 있음.
-일단 adb란 Android Debug Bridge(ADB)로 기기와 통신할 수 있는 다목적 명령줄 도구로 android SDK Flatform 도구 패키지에 포함되어 있다고 함. [adb 문서](https://developer.android.com/studio/command-line/adb?hl=ko)에서 다운 받을 수 있음.
+일단 adb란 Android Debug Bridge(ADB)로 기기와 통신할 수 있는 다목적 명령줄 도구로 android SDK Platform 도구 패키지에 포함되어 있다고 함. [adb 문서](https://developer.android.com/studio/command-line/adb?hl=ko) 참고.
+
+Tools -> SDK Manager를 클릭하여 android sdk platform-tools 업데이트 했음.
+체크는 이미 설치, -는 업데이트 가능 표시.
+
+"C:\Users\사용자\AppData\Local\Android\Sdk\platform-tools" 경로는 다음과 같아서 시스템변수 path에 등록해주었음
+
+```
+PS C:\Users\6pizz\AndroidStudioProjects\MyApplication> cd C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb devices
+List of devices attached
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:5555      failed to authenticate to 192.168.0.5:5555
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:5555
+already connected to 192.168.0.5:5555
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:5555
+cannot connect to 192.168.0.5:5555: 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다. (10060)
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:5555
+already connected to 192.168.0.5:5555
+
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb devices
+List of devices attached
+192.168.0.5:5555        device
+
+```
+
 
