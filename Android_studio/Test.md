@@ -4,3 +4,5 @@
 
 격리 테스트, 디버깅 테스트, 시맨틱 트리, 동기화
 
+자동테스트, 로컬 테스트(Test), 계측 테스트(android test) Compose Test Rule
+
