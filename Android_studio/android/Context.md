@@ -5,3 +5,15 @@ Jetpack Compose에서 `LocalContext.current`은 현재 컴포저블이나 컴포
 
 `LocalContext.current.applicationContext`는 현재 컨텍스트의 애플리케이션 컨텍스트를 반환합니다. 이것은 안전한 컨텍스트를 사용하여 다양한 작업(예: 리소스 액세스, 데이터베이스 액세스 등)을 수행할 때 사용됩니다. 예를 들어, 리소스에 액세스할 때 사용할 수 있습니다.
 
+
+Context는 애플리케이션 환경에 대해 전역적인 정보를 얻을 수 있는 추상 클래스
+1. 애플리케이션의 현재 상태를 가짐.
+2. activity나 애플리케이션 전역에 대한 정보를 얻을 때 사용.
+3. 애플리케이션 리소스, local db, datastore 같은 로컬 저장소 접근할 때 사용.
+4. activity, 애플리케이션 클래스는 기본적으로 Context 상속.
+
+
+Context type
+Application Context - 애플리케이션 전역, 프로세스에서 한 개만 존재. 
+Activity Context - 액티비티 내에서 액티비티와 동일한 생명주기.
+localContext.current - Compose 
