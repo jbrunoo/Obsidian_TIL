@@ -158,3 +158,9 @@ Hilt를 사용하면 앱의 구성 요소에 대한 의존성을 자동으로 �
 이러한 의존성 주입은 코드의 유지보수성을 향상시키고 테스트 가능한 코드를 작성하는 데 도움이 됩니다. 또한 객체 간의 결합도를 낮춰 시스템을 확장하거나 변경하기 쉽게 만듭니다.
 
 
+MVVM  + DI 예제 코드
+[compose, retrofit, MVVM](https://medium.com/@jecky999/building-an-android-app-with-jetpack-compose-retrofit-and-mvvm-architecture-12a5e03eb03a)
+[retrofit with MVVM](https://saurabhjadhavblogs.com/retrofit-with-mvvm-in-jetpack-compose) 
+[roomdb with Flow & DI](https://saurabhjadhavblogs.com/compose-mvvm-roomdb-with-flow-and-di)
+
+
