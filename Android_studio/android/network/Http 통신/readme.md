@@ -5,3 +5,4 @@ Basis
 (안드로이드의 메인 스레드는 전부 UI 관련 처리를 담당)
 `<uses-permission android:name="android.permission.INTERNET"/>` Manifest에 인터넷 권한.
 
+httpUrlConnection, okhttp3, retrofit2, ktor
