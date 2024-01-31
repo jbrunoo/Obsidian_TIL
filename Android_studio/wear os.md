@@ -86,3 +86,11 @@ List of devices attached
 ```
 
 
+갤럭시 워치 업데이트 이후 개발자 도구에 무선 디버깅 + 새 기기 등록 이용(페어링 코드 및 ip, port) 
+```
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb pair 192.168.0.5:35553   
+Enter pairing code: 779628
+Successfully paired to 192.168.0.5:35553 [guid=adb-RFAT41W36HM-lV6BiQ]
+PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:40535
+connected to 192.168.0.5:40535
+```
