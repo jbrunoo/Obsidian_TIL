@@ -94,3 +94,5 @@ Successfully paired to 192.168.0.5:35553 [guid=adb-RFAT41W36HM-lV6BiQ]
 PS C:\Users\6pizz\AppData\Local\Android\Sdk\platform-tools> adb connect 192.168.0.5:40535
 connected to 192.168.0.5:40535
 ```
+
+ps. [유튜브](https://www.youtube.com/watch?v=mnYKta1I0PU) 폰 연결도 같음. 폰에서 0은 최상위 폴더 의미.
