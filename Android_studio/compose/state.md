@@ -10,3 +10,6 @@ by는 getValue, setValue import해야 함.
 상태에 대한 이해.
 [A Compose state of mind](https://www.youtube.com/watch?v=rmv2ug-wW4U)
 
+
+[blog](https://tigeroakes.com/posts/mutablestateof-list-vs-mutablestatelistof/)
+mutableStateOf(listOf<T>()) VS mutableStateListOf<T>()
