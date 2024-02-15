@@ -2,6 +2,8 @@ navController vs navHostController [참고](https://jgeun97.tistory.com/334)
 
 즉 NavController를 직접사용할 수는 있지만, 하위 구현체는 NavHostController를 통해 액새스하는 것이 좋다고 설명합니다.
 
+추가) NavHost 안에서 쓰는게 navHostController
+
 저희가 사용하는 대부분의 기능들은 NavController에 포함되어 있고 NavHostController 4가지 함수만 override하는 형태입니다.
 
 - setLifecycleOwner

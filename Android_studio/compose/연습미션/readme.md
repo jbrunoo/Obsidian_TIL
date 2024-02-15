@@ -7,4 +7,4 @@ CodingHealth repo에 기록 중
 
 2번 - 로또 번호 뽑아주기 구현 
 
-3번 - 
+3번 - navigation 이용 화면 전환(Single Activity Architecture)
