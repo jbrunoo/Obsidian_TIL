@@ -162,7 +162,16 @@ ps. [why use sealed class?](https://stackoverflow.com/questions/69686087/why-use
 - bottom navigation bar
 [blog](https://velog.io/@chuu1019/Android-Jetpack-Compose-Bottom-Navigation-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 material은 BottomNavigation
-material3는 BottomAppBar
+material3는 BottomAppBar, NavigationBar도 있음
+
+navigation의 중점은 navHost의 구성과 stack 관리
+ex) navigation bar와 navHost를 연결하고 navigate 할 때마다 stack이 쌓임.
+이런 부분은 popUpTo, inclusive, launchSingleTop 요소들이 있음.
+하지만 번갈아 가면서 누르게 되면 recomposition이 계속 일어남. 
+route를 rememberSavable 같은 것으로 기억해도 되겠지만
+save state, restore state로 구현 가능.
+[공식문서](https://developer.android.com/jetpack/compose/navigation?hl=ko#bottom-nav)
+stackOverFlow로 먼저 확인했지만 역시 답은 공식문서에 있다..
 
 ```kotlin
 @Composable  
@@ -198,3 +207,9 @@ fun BottomNavigationBar(navController: NavHostController) {
         }  
     }}
 ```
+
+ps. 위 코드 처럼 구현하게 되면 startDestinationId로 돌아온 다음 한 번 더 뒤로 누르면 앱을 종료함.
+카카오톡은 어느 화면에서든 뒤로 가기 누르면 종료됨. 유튜브는 같은 스택이 여러 번 쌓이지는 않지만 누른 스택을 다 순회하고 startDestination 까지 돌아온 다음 종료됨.
+popUpTo 쓰기 나름인 듯 하다.
+
+
