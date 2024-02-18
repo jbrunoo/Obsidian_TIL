@@ -12,5 +12,9 @@ by는 getValue, setValue import해야 함.
 
 
 [blog](https://tigeroakes.com/posts/mutablestateof-list-vs-mutablestatelistof/)
-mutableStateOf(listOf<T>()) VS mutableStateListOf<T>()
+`mutableStateOf(listOf<T>()) VS mutableStateListOf<T>()`
+
+
+깔끔한 설명
+[blog2](https://developer88.tistory.com/entry/Android-Jetpack-Compose-UI-Part1-State)
 
