@@ -4,6 +4,11 @@
 필수 10개
 BFS, DFS, 백트래킹, 시뮬레이션, 이진탐색, Greedy, DP, MST, 다익스트라, 플로이드
 
+기본 : 스택, 큐, 우선순위 큐, deque, 해시맵, 문자열
+초급 : prority queue, 완전탐색
+중급 : 이진탐색, DFS, BFS, Recursion
+심화 : Graph, DP
+
 
 시간복잡도
 시간으로 설명하기 보다(시간은 OS 사양 등 영향 주는게 많음),

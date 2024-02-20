@@ -1,18 +1,3 @@
-
-### `it` vs `this`
-특수 키워드
-
-- it
-	주로 람다 함수에서 쓰임
-	람다 함수에서 매개변수가 하나인 경우,
-	해당 매개변수의 이름을 명시하지 않고 "it"을 사용할 수 있음
-
-- this
-	"this"는 클래스의 멤버 함수에서 클래스 자체를 가리키는 키워드
-	클래스 내부에서 클래스의 프로퍼티나 메서드에 접근할 때 사용
-	"this"는 해당 클래스의 인스턴스를 가리킴
-
-
 ### `context` 
 안드로이드 애플리케이션에서 액티비티(Activity), 서비스(Service), 어플리케이션(Application) 등과 같은 안드로이드 컴포넌트들과 상호작용하기 위한 핵심 클래스(그래서 위처럼 this로 받음)
 
@@ -30,10 +15,7 @@
 
 ### `databinding`
 기존 xml 기반 UI 개발 방식은 디자인과 로직이 나뉘어서 Data Binding 라이브러리 사용했으나
-Compose에서는 필요없다. 하지만 개념이 사라지는 것은 아니다.
-databinding은 
-
-
+Compose에서는 필요없다. databinding은 compose에 state, recomposition, remember, mutableStateOf의 기능과 대응된다.
 
 `then` : Modifier.then() 으로 순서를 유지하며 여러 수정자들을 함께 연결 가능. [참고](https://developermemos.com/posts/modifier-then-jetpack-compose)
 예시코드(modifier를 받아야 함)
