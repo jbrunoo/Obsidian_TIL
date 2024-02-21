@@ -38,6 +38,9 @@
 [document](https://supabase.com/docs/reference/kotlin/installing) - 여기서 모듈 눌러서 각각 모듈의 노트 열어서 파라미터 볼 수 있음.
 auth 위해서 GoTrue 모듈 써야 함(?) 필수인지는 모르겠음.
 안드로이드 & ios는 딥링크를 구성하라는데 무슨 말인지 이해가 완전히 안됨.
+=> supabase 카카오 르그인 관한 블로그들이 올라오기 시작해서 드디어 확인..
+android 에서 manifest 파일 부분이 딥링크 구성 부분이 였음..
+네트워크에 대한 이해가 적다보니 당시에 코드 부분에서 고민했던 것 같음
 ```
 **Android & IOS:**
 
