@@ -164,3 +164,33 @@ MVVM  + DI 예제 코드
 [roomdb with Flow & DI](https://saurabhjadhavblogs.com/compose-mvvm-roomdb-with-flow-and-di)
 
 
+```kotlin
+
+// DI 라이브러리 X
+// ViewModel 
+class MyViewModel(private val repository: MyRepository) : ViewModel() { 
+	// ViewModel의 로직 구현 
+} 
+// Repository 
+class MyRepository(private val apiService: ApiService) { 
+	// Repository의 로직 구현 
+} 
+// ApiService 
+class ApiService { 
+	// 네트워크 호출 등의 로직 구현 
+}
+
+// hilt 이용
+// ViewModel 
+	class MyViewModel @Inject constructor(private val repository: MyRepository) : ViewModel() { // ViewModel의 로직 구현 
+} 
+// Repository 
+class MyRepository @Inject constructor(private val apiService: ApiService) { 
+	// Repository의 로직 구현 
+} 
+// ApiService class 
+ApiService @Inject constructor() { 
+	// 네트워크 호출 등의 로직 구현 
+}
+```
+

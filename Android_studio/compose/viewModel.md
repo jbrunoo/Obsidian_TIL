@@ -57,3 +57,8 @@ viewModel: DiceRollViewModel = viewModel()
 하지만 5년전 강의다 보니 xml과 databinding을 이용하고 지금 AAC viewModel에 바뀐 부분이 있는지 알 수 없었다. Compose는 어떤 식인지 궁금해서 skydoves님의 mvvm 예제 코드를 살펴보았음. 따로 compose에서 databinding의 역할을 하는 부분을 찾지 못함. 그래서 아마 AAC의 viewModel과 DI를 함께 쓰는 이유가 있지 않을까 생각해서 개발자님께 질문 예정.
 
 
+
+#### viewModel backing properties
+[블로그](https://everyday-develop-myself.tistory.com/m/344)
+변수에서 살펴보았던 getter, setter, =, by와 함께
+

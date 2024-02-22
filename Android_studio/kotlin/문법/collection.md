@@ -1,7 +1,8 @@
 list, set, map 등
 
 
-collection 함수
+collection 함수 - 표준 라이브러리에서 제공하며 확장 함수 형태로 제공.
+(자바8에서 스트림 기능, 스트림 함수라고 부름)
 sum(), multiple()(?)
 sumBy {}
 sumOf {} : kotlin 1.4 ? 이후 sumByDouble 등 int, long, double에 대한 각각 연산을 오버로딩해서 한꺼번에 수행 가능함. 성능은 비슷.
