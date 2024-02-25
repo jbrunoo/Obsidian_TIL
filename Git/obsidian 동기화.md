@@ -26,3 +26,17 @@ obsidian 실행 시 obsidian_git plugin이 함께 가져왔는데 fatal : bad ob
 5. git branch -f main origin/main
 	git checkout main 
 	이미 main 브랜치라고 뜬다.
+
+
+
+추가)
+맥북 구매 후 똑같이 구글 드라이브를 통해서 옮겼음
+OS 변경, 사용자명도 바꿔서 약간 다른 fatal로 시작하는 오류가 떴음
+git fetch obsidian 하니 user name과 password가 필요한데
+입력하면 이제는 password 대신  토큰 인증을 하라고 뜸
+
+github - settings - developer mode 에서 토큰 생성하면 됨
+
+`git remote set-url origin https://jbrunoo:<YOUR_TOKEN>@github.com/jbrunoo/Obsidian_TIL.git/`
+이후 token을 저기 넣어주면 해결
+
