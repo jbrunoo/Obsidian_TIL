@@ -40,3 +40,9 @@ github - settings - developer mode 에서 토큰 생성하면 됨
 `git remote set-url origin https://jbrunoo:<YOUR_TOKEN>@github.com/jbrunoo/Obsidian_TIL.git/`
 이후 token을 저기 넣어주면 해결
 
+```kotlin
+git config --global user.name "jburnoo" 
+git config --global user.email "jburnoo@example.com"
+```
+
+commit 이력이 다르게 표시되어서 원래대로 변경해줌
