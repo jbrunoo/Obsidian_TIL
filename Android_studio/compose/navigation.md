@@ -1,3 +1,21 @@
+#### navigation의 구성 요소
+	Navigation Graph
+	내비게이션과 관련된 모든 데이터를 한 곳에 모아 놓은 리소스
+	앱의 모든 위치와 사용자가 앱을 통해 이동할 수 있는 가능한 경로가 포함
+	지도와 가이드가 결합된 것
+	
+	NavHost
+	레이아웃에 포함될 수 있는 고유한 composable 
+	탐색 그래프의 다양한 목적지를 보여줌
+	탐색할 수 있는 구성 가능한 대상을 지정하는 탐색 그래프와 연결
+	
+	
+	NavController
+	navigation 구성 요소의 중앙 API
+	stateful이며 앱의 화면을 구성하는 컴포저블의 백 스택과 각 화면의 상태를 추적
+
+
+
 navController vs navHostController [참고](https://jgeun97.tistory.com/334)
 
 즉 NavController를 직접사용할 수는 있지만, 하위 구현체는 NavHostController를 통해 액새스하는 것이 좋다고 설명합니다.
