@@ -23,3 +23,12 @@ StateFul vs StateLess
 내부에서 state를 관리하는지 아닌지 차이.
 stateless를 만들기 위해 state hoisting 패턴을 사용.
 호출자에게 state를 올림.
+
+
+mutableStateOf vs mutableStateListOf [stackoverflow](https://stackoverflow.com/questions/75019326/what-is-the-difference-between-mutablestateof-and-mutablestatelistof)
+전자는 객체 생성이며 by를 통해서 위임 패턴 활용. recomposition이 새 인스턴스를 할당할 때 발생
+즉, 새 항목이 추가되었을 때 recomposition이 되기를 바라면 복사본을 만들어 복사된 목록을 할당해주어야 함
+
+후자는 관찰 가능한 list가 생성됨. 수행하는 모든 작업에 의해 recomposition이 발생함.
+
+
