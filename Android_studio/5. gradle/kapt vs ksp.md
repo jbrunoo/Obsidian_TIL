@@ -3,6 +3,7 @@
 ###### Kapt(Kotlin Annotation Processing Tool)
 	Java annotation Processor를 사용하여 Annotation들을 사용할 수 있도록 도와줌
 	이 과정에서 stub을 생성하는데 빌드 속도에 영향을 미치는 요인
+	ps. 정처기에서 test기법 모듈 stub, driver할 때 그 stub과 동명..
 
 ###### KSP(Kotlin Symbol Processing)
 	Kapt와 같은 역할
