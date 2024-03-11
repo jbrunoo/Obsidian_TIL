@@ -26,3 +26,6 @@ test : 테스트 코드 수정에 대한 커밋
 
 한 줄 안에 설명할 수 있도록 하나의 action마다 하나의 commit을 달기.
 여러 디렉토리를 한꺼번에 수정하고 commit하지 말기.
+
+
+[git commit message](https://github.com/joelparkerhenderson/git-commit-message)
