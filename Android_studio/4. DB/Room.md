@@ -76,5 +76,16 @@ Cannot access database on the main thread since it may potentially lock the UI f
 ```
 val existingUserName by db.userDao().findByName(name).collectAsState(null)
 ```
-collectAsState 처리를 해주고 findByName 함수에 flow<user> 처리를 해주었음.
+collectAsState 처리를 해주고 findByName 함수에 flow<\user> 처리를 해주었음.
+
+
+- - -
+앱 생성 시 db에 초기 값 입력하기
+1. 사전 패키징된 데이터 베이스 추가 ([공식문서](https://developer.android.com/training/data-storage/room/prepopulate?hl=ko#kotlin))
+	이 방식은 .db 파일을 가지고 있어야 함 ([db browser for sqlite 에서 db파일 생성 가능](https://sqlitebrowser.org/))
+	.db 파일이 assets, file system 중 저장 위치에 따라 createFromAsset(".db"), createFromFile(".db") 
+2. 직접 하드코딩한 간단한 더미 or json 파일
+	간단한 코드라면 oncreate에서 코드 상으로 DAO insert 활용하여 집어넣거나
+	room.databaseBuilder의 .addCallback() 메소드 활용
+
 
