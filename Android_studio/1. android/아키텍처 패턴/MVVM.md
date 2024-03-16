@@ -40,3 +40,11 @@ Repository
 - viewModel과 데이터를 주고받기 위해 데이터 API를 포함하는 클래스. 사용자 동작에 따라 외부 백엔드 서버 등에서 데이터 가져옴. viewModel이 데이터를 관리할 필요x
 RoomDatabase
 - local DB
+
+
+#### DAO vs Repository [#1](https://stackoverflow.com/questions/8550124/what-is-the-difference-between-dao-and-repository-patterns) [#2](https://stackoverflow.com/questions/71400416/why-do-we-need-to-use-dao-and-repository-in-the-same-time-on-android-project)
+	DAO와 Repository 둘 다 interface로 추상화하는데 역할이나 코드가 거의 같음.
+	왜 Repository 패턴을 사용하는지?
+	1. 의미론적 구분(database와 repository의 역할을 구분하기 위해)
+	2. Database가 여러 개인 경우 많은 DAO를 생성해야하므로 코드 중복 및 오류 발생 가능성
+
