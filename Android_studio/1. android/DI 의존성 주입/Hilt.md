@@ -1,0 +1,120 @@
+# Hilt 사용법
+
+[유튜브 참고](https://www.youtube.com/watch?v=wZn-zpwvxCU)from 8:22 글로만 적음.
+1. 반드시 @HiltAndroidApp annotation이 지정된 Application 클래스가 있어야 함.
+	Hilt가 안드로이드 생명주기에 맞춰 동작하게 되므로 Application 객체가 필요.
+2. 안드로이드 component에 주입을 요청.
+3. MainViewModel 객체 생성 방법을 알려주고 RemoteRepository 주입을 요청.
+4. RemoteRepository 객체 생성 방법을 알려줌.
+
+생성자 앞에 `@Inject`를 달아줌으로써 객체 생성 방법을 알려줄 수 있음.
+activity나 fragment에서 viewModel을 주입받을 때, activity ktx, fragment ktx 기능으로 (?)
+
+사용 방법 따로 익히기.
+
+# dagger hilt - compose에서 적용
+[공식문서](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko#kotlin)
+[유튜브](https://www.youtube.com/watch?v=bbMsuI2p1DQ)
+
+![[Pasted image 20231123123625.png]]
+
+  
+의존성 주입(Dependency Injection)은 소프트웨어 디자인 패턴 중 하나로, 클래스가 직접 자신의 의존성을 생성하지 않고 외부에서 주입받는 것. 안드로이드에서 Hilt와 같은 의존성 주입 프레임워크를 사용하여 구현
+
+"의존성"이란 다른 클래스나 모듈에 대한 의존 관계를 의미
+클래스 A가 클래스 B에 의존한다면, A는 B의 기능이나 객체를 사용하거나 확장하는 것
+
+의존성 주입 주로 세 가지 형태:
+
+1. **생성자 주입(Constructor Injection):** 클래스의 생성자를 통해 의존성을 주입하는 방식. 클래스가 인스턴스화될 때 외부에서 필요한 의존성을 전달받습니다. Hilt에서는 `@Inject` 어노테이션을 사용하여 생성자에 주입할 의존성을 표시합니다.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 생성자 주입 class MyClass @Inject constructor(private val dependency: Dependency) {     // ... }`
+    
+2. **메소드 주입(Method Injection):** 클래스의 메소드를 통해 의존성을 주입하는 방식. 특정 메소드에 의존성을 전달받아 사용.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 메소드 주입 class MyClass {     @Inject     fun setDependency(dependency: Dependency) {         // ...     } }`
+    
+3. **필드 주입(Field Injection):** 클래스의 필드를 통해 의존성을 주입하는 방식. 클래스의 필드에 `@Inject` 어노테이션을 사용하여 주입할 의존성을 표시.
+    
+    javaCopy code
+    
+    `// 예시: Hilt를 사용한 필드 주입 class MyClass {     @Inject     private lateinit var dependency: Dependency }`
+    
+
+
+이러한 의존성 주입은 코드의 유지보수성을 향상시키고 테스트 가능한 코드를 작성하는데 도움
+또한 객체 간의 결합도를 낮춰 시스템을 확장하거나 변경하기 쉬움
+
+
+MVVM  + DI 예제 코드
+[compose, retrofit, MVVM](https://medium.com/@jecky999/building-an-android-app-with-jetpack-compose-retrofit-and-mvvm-architecture-12a5e03eb03a)
+[retrofit with MVVM](https://saurabhjadhavblogs.com/retrofit-with-mvvm-in-jetpack-compose) 
+[roomdb with Flow & DI](https://saurabhjadhavblogs.com/compose-mvvm-roomdb-with-flow-and-di)
+
+
+```kotlin
+
+// DI 라이브러리 X
+// ViewModel 
+class MyViewModel(private val repository: MyRepository) : ViewModel() { 
+	// ViewModel의 로직 구현 
+} 
+// Repository 
+class MyRepository(private val apiService: ApiService) { 
+	// Repository의 로직 구현 
+} 
+// ApiService 
+class ApiService { 
+	// 네트워크 호출 등의 로직 구현 
+}
+
+// hilt 이용
+// ViewModel 
+	class MyViewModel @Inject constructor(private val repository: MyRepository) : ViewModel() { // ViewModel의 로직 구현 
+} 
+// Repository 
+class MyRepository @Inject constructor(private val apiService: ApiService) { 
+	// Repository의 로직 구현 
+} 
+// ApiService class 
+ApiService @Inject constructor() { 
+	// 네트워크 호출 등의 로직 구현 
+}
+```
+
+
+- - -
+사용법 추가
+
+Hilt를 사용하면 앱의 구성 요소에 대한 의존성을 자동으로 주입 가능.
+Android에서는 아래 클래스들을 지원
+- `Application`(`@HiltAndroidApp`을 사용하여)
+- `ViewModel`(`@HiltViewModel`을 사용하여)
+- `Activity`
+- `Fragment`
+- `View`
+- `Service`
+- `BroadcastReceiver`
+
+1.
+위 제공하는 클래스의 경우 생성자 주입 등으로 간편히 사용 가능
+
+2.
+인터페이스나 외부 라이브러리 같은 경우는 생성자 삽입을 할 수 없음
+hilt 모듈을 사용하여 hilt에 결합 정보 알림(@Module)
+또한, @InstallIn 주석으로 각 모듈을 사용하거나 설치할 android 클래스를 hilt에 알려야 함
+[InstallIn에 참조 가능한 구성요소](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko#generated-components) [구성요소의 수명 주기](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko#component-lifetimes)
+
+3-1.
+인터페이스의 경우, @Binds로 추상 함수 생성하여 hilt에 결합 정보 제공
+3-2.
+retrofit, okhttpclient, room 등 외부 라이브러리에서 제공되므로 클래스를 소유하지 않은 경우,
+또는 빌더 패턴으로 인스턴스를 생성해야 하는 경우,
+@Provides로 함수 생성하여 hilt에 알림
+
+ps. 주석이 지정된 함수가 제공하는 것 : 함수 반환 유형, 함수 매개변수는 제공할 구현을 hilt에 알림
+
