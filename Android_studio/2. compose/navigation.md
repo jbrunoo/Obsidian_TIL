@@ -231,3 +231,6 @@ ps. 위 코드 처럼 구현하게 되면 startDestinationId로 돌아온 다음
 popUpTo 쓰기 나름인 듯 하다.
 
 
+
+nested navigation
+[github](https://github.com/stevdza-san/NestedNavigationBottomBarDemo)

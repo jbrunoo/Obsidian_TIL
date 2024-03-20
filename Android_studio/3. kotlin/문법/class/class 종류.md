@@ -1,6 +1,7 @@
 enum class
 
-sealed class
+sealed class [#1](https://kotlinlang.org/docs/sealed-classes.html#constructors)
+- sealed interface [medium](https://jorgecastillo.dev/sealed-interfaces-kotlin?source=post_page-----db1fff634860--------------------------------)
 
 data class
 auto-generate : equals / hashCode / toString / copy
