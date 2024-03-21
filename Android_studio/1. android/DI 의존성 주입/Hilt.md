@@ -118,3 +118,10 @@ retrofit, okhttpclient, room 등 외부 라이브러리에서 제공되므로 �
 
 ps. 주석이 지정된 함수가 제공하는 것 : 함수 반환 유형, 함수 매개변수는 제공할 구현을 hilt에 알림
 
+
+- - -
+hilt 에러
+1. \[Hilt]
+	project와 app gradle 버전이 일치하지 않았음
+2. java.lang.RuntimeException: Unable to instantiate application com.jbrunoo.proverbquiz.MainApplication package com.jbrunoo.proverbquiz: java.lang.ClassNotFoundException: Didn't find class "com.jbrunoo.proverbquiz.MainApplication" on path: DexPathList[[zip file "/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/base.apk"],nativeLibraryDirectories=[/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/lib/arm64, /system/lib64, /system_ext/lib64]]
+	ㅇㄹ
