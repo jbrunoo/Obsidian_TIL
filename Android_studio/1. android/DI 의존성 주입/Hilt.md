@@ -124,4 +124,4 @@ hilt 에러
 1. \[Hilt]
 	project와 app gradle 버전이 일치하지 않았음
 2. java.lang.RuntimeException: Unable to instantiate application com.jbrunoo.proverbquiz.MainApplication package com.jbrunoo.proverbquiz: java.lang.ClassNotFoundException: Didn't find class "com.jbrunoo.proverbquiz.MainApplication" on path: DexPathList[[zip file "/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/base.apk"],nativeLibraryDirectories=[/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/lib/arm64, /system/lib64, /system_ext/lib64]]
-	ㅇㄹ
+	annotationProcessor -> kapt로 해결(ksp는 안되었음 hilt에서 ksp 지원 알파단계라 지원안되는 버전이 있음)
