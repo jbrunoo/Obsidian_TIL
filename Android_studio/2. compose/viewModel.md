@@ -62,3 +62,5 @@ viewModel: DiceRollViewModel = viewModel()
 [블로그](https://everyday-develop-myself.tistory.com/m/344)
 변수에서 살펴보았던 getter, setter, =, by와 함께
 
+- - -
+hilt 사용 없이 viewmodel에 저장소(repository, dao) 같은 종속 항목 주입 경우 viewmodel.factory DSL을 사용해야 함 [공식문서](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factories?hl=ko#jetpack-compose)
