@@ -126,3 +126,13 @@ hilt 에러
 	project와 app gradle 버전이 일치하지 않았음
 2. java.lang.RuntimeException: Unable to instantiate application com.jbrunoo.proverbquiz.MainApplication package com.jbrunoo.proverbquiz: java.lang.ClassNotFoundException: Didn't find class "com.jbrunoo.proverbquiz.MainApplication" on path: DexPathList[[zip file "/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/base.apk"],nativeLibraryDirectories=[/data/app/~~GxufCpyH8VymYjXgZoUwYQ==/com.jbrunoo.proverbquiz-rfIOCZvb5IO0SqOQct76oQ==/lib/arm64, /system/lib64, /system_ext/lib64]]
 	annotationProcessor -> kapt로 해결(ksp는 안되었음 hilt에서 ksp 지원 알파단계라 지원안되는 버전이 있음)
+
+
+screen에서 viewmodel 을 주입할 때 차이 ? [벨로그](https://velog.io/@wlsrhkd4023/Compose-hiltViewModel%EA%B3%BC-viewModel-%EC%B0%A8%EC%9D%B4)
+```kotlin
+// 보통 아래처럼 쓰는데 연습 코드를 작성해보다 화면 전환도 없고 굳이 더 추가할 필요 없어보여서 위로 구현하고 든 궁금증
+viewModel: todoViewModel = viewModel()
+viewModel: todoViewModel = hiltViewModel() // hilt-navigation-compose 디펜던시 추가
+
+
+```

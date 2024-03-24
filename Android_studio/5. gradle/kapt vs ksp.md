@@ -7,7 +7,7 @@
 	더 이상 신규 기능을 추가할 생각이 없다고 적혀있음. 
 	근데 developer hilt 문서에는 아직 kapt 사용함
 
-###### KSP(Kotlin Symbol Processing) [kotlinlang - ksp](https://kotlinlang.org/docs/ksp-overview.html)
+###### KSP(Kotlin Symbol Processing) [kotlinlang - ksp](https://kotlinlang.org/docs/ksp-overview.html) [ksp release version](https://github.com/google/ksp/releases)
 	Kapt와 같은 역할
 	Kotlin 코드르 직접 분석하기 때문에 빌드 속도가 훨씬 빠름
 
