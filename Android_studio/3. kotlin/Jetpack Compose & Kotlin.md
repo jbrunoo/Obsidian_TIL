@@ -78,3 +78,20 @@ ps. 물론 내 코드에서 저렇게 쓰지 않고 다른 방법은 있을 듯.
 	windowInsets keyword 활용.
 
 [compose 창 인셋](https://developer.android.com/jetpack/compose/layouts/insets?hl=ko)
+
+[#1 stackoverflow](https://stackoverflow.com/questions/69688138/how-to-hide-navigationbar-and-statusbar-in-jetpack-compose) - 상태표시줄 제거 [#2 stackoverflow](https://stackoverflow.com/questions/74429460/how-to-implement-transparent-status-bar-in-jetpack-compose-android) - 상태 표시줄 투명
+```kotlin
+val insetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+insetsController.apply {
+    hide(WindowInsetsCompat.Type.statusBars())
+    hide(WindowInsetsCompat.Type.navigationBars())
+    systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+}
+```
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {  
+enableEdgeToEdge() // theme.kt view 부분 지우고 사용(상태바 투명)  
+super.onCreate(savedInstanceState)
+```
