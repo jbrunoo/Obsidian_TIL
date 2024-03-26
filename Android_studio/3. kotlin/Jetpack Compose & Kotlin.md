@@ -62,36 +62,5 @@ Row(
         .then(Modifier.padding(it))   // 이런식으로 또는 container를 하나 더 만들기?
 ) {}
 ```
-ps. 물론 내 코드에서 저렇게 쓰지 않고 다른 방법은 있을 듯.
+ps. 물론 내 코드에서 저렇게 쓰지 않고 다른 방법은 있을 듯
 
-
-### 상태 표시줄 숨기기(완전한 full screen)
-[1번](https://developer.android.com/training/system-ui/status?hl=ko)
-- android 4.0(API 수준 14) 이하는 manifest 수정 or 프로그래매틱한 방법으로
-- Android 4.1(API 수준 16) 이상에서는 `setSystemUiVisibility()`를 사용
-	사용해 봤는데 deprecated한 부분들 존재.
-	
-[2번](https://developer.android.com/training/system-ui/immersive?hl=ko) 
- 레거시.
- 
-[3번](https://developer.android.com/jetpack/compose/layouts/insets?hl=ko)
-	windowInsets keyword 활용.
-
-[compose 창 인셋](https://developer.android.com/jetpack/compose/layouts/insets?hl=ko)
-
-[#1 stackoverflow](https://stackoverflow.com/questions/69688138/how-to-hide-navigationbar-and-statusbar-in-jetpack-compose) - 상태표시줄 제거 [#2 stackoverflow](https://stackoverflow.com/questions/74429460/how-to-implement-transparent-status-bar-in-jetpack-compose-android) - 상태 표시줄 투명
-```kotlin
-val insetsController = WindowCompat.getInsetsController(window, window.decorView)
-
-insetsController.apply {
-    hide(WindowInsetsCompat.Type.statusBars())
-    hide(WindowInsetsCompat.Type.navigationBars())
-    systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-}
-```
-
-```kotlin
-override fun onCreate(savedInstanceState: Bundle?) {  
-enableEdgeToEdge() // theme.kt view 부분 지우고 사용(상태바 투명)  
-super.onCreate(savedInstanceState)
-```

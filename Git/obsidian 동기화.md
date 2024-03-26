@@ -1,6 +1,6 @@
 다른 노트북으로 obsidian 동기화 옮길 시.
 옵시디언 폴더를 onedrive를 통해 옮겨서 그대로 가져왔으나
-obsidian 실행 시 obsidian_git plugin이 함께 가져왔는데 fatal : bad object HEAD 오류
+obsidian 실행 시 obsidian_git plugin을 함께 가져왔는데 fatal : bad object HEAD 오류
 
 
 1. .git이 있는 obsidian 폴더에서 git bash 실행.
@@ -31,7 +31,7 @@ obsidian 실행 시 obsidian_git plugin이 함께 가져왔는데 fatal : bad ob
 
 추가)
 맥북 구매 후 똑같이 구글 드라이브를 통해서 옮겼음
-OS 변경, 사용자명도 바꿔서 약간 다른 fatal로 시작하는 오류가 떴음
+OS 변경, 사용자명도 바뀌어서 약간 다른 fatal로 시작하는 오류가 떴음
 git fetch obsidian 하니 user name과 password가 필요한데
 입력하면 이제는 password 대신  토큰 인증을 하라고 뜸
 
@@ -46,3 +46,18 @@ git config --global user.email "jburnoo@example.com"
 ```
 
 commit 이력이 다르게 표시되어서 원래대로 변경해줌
+
+
+추가2)
+remote: invalid username or password
+obsidian_TIL repo가 private로 설정되어 username password를 넣어줬는데 토큰으로 입력하다보니 만료되서 그런 듯함
+해결방법은 위와 같았음
+```kotlin
+git remote remove origin
+git remote add origin https://닉네임:토큰@github.com/repository_경로
+
+// repository에서 닉네임 부분을 뺴먹었었음.
+git remote set-url origin https://제대로_넣어줬음
+git push origin main
+```
+

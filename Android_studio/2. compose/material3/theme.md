@@ -5,16 +5,47 @@ color, typography, shapes
 
 material3 에서는 color(lightColorScheme/darkColorScheme), Typography(bodyLarge, titleLarge, labelSmall..)
 
-color(# -> 0xff)
-`#dd0d3c` -> `Color(0xffdd0d3c)`
-color.kt에 color 값 설정
-기본/보조/3차 색상, 배경/표면 색상, on 색상
-**기본**은 기본 색상으로, 눈에 띄는 버튼 및 활성 상태와 같은 기본 구성요소에 사용
-**보조** 키 색상은 필터 칩과 같이 UI에서 눈에 덜 띄는 구성요소에 사용
-**3차** 키 색상은 대비 강조를 위해 사용되며, 중성색은 앱의 배경과 표면에 사용
-[mertrial builder](https://m3.material.io/theme-builder#/custom) 이용해서 primary color만 설정하고 theme.kt, color.kt를 export 가능
-export 해오면 변수명이 달라지니 조심하자 MaterialTheme.colorScheme의 매개변수는 `primary: Color`인데 export하면 `md_theme_light_primary` 로 나옴
+# color(# -> 0xff)
+	`#dd0d3c` -> `Color(0xffdd0d3c)`
+	color.kt에 color 값 설정
+	[mertrial builder](https://m3.material.io/theme-builder#/custom) 이용해서 primary color만 설정하고 theme.kt, color.kt를 export 가능
+	export 해오면 변수명이 달라지니 조심하자 MaterialTheme.colorScheme의 매개변수는 `primary: Color`인데 export하면 `md_theme_light_primary` 로 나옴
 
-font
+```kotlin
+// 컬러 값 예시
+// on은 대비되는 색상 ex) 버튼 색
+val primary = Color(0xFF3B6A1D)  
+val onPrimary = Color(0xFFFFFFFF)  
+val primaryContainer = Color(0xFFBAF294)  
+val onPrimaryContainer = Color(0xFF092100)  
+val secondary = Color(0xFF56624B)  
+val onSecondary = Color(0xFFFFFFFF)  
+val secondaryContainer = Color(0xFFD9E7CA)  
+val onSecondaryContainer = Color(0xFF141E0D)  
+val tertiary = Color(0xFF386666)  
+val onTertiary = Color(0xFFFFFFFF)  
+val tertiaryContainer = Color(0xFFBBECEB)  
+val onTertiaryContainer = Color(0xFF002020)  
+val error = Color(0xFFBA1A1A)  
+val errorContainer = Color(0xFFFFDAD6)  
+val onError = Color(0xFFFFFFFF)  
+val onErrorContainer = Color(0xFF410002)  
+val background = Color(0xFFFDFDF5)  
+val onBackground = Color(0xFF1A1C18)  
+val surface = Color(0xFFFDFDF5)  
+val onSurface = Color(0xFF1A1C18)  
+val surfaceVariant = Color(0xFFE0E4D6)  
+val onSurfaceVariant = Color(0xFF43483E)  
+val outline = Color(0xFF74796D)  
+val inverseOnSurface = Color(0xFFF1F1EA)  
+val inverseSurface = Color(0xFF2F312C)  
+val inversePrimary = Color(0xFF9FD67B)  
+val surfaceTint = Color(0xFF3B6A1D)  
+val outlineVariant = Color(0xFFC4C8BB)  
+val scrim = Color(0xFF000000)
+```
+
+
+# font
 [상업용 무료 폰트](https://noonnu.cc/)
 
