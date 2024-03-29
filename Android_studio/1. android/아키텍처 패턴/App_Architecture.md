@@ -128,7 +128,7 @@ ps. 구현 세부정보에 따라 데이터 소스의 이름을 지정 X
 
 정리 : Data Layer는 Repository와 Data Sources로 구성.
 	이 레이어에서 노출된 데이터는 변경 불가능 해야 함.
-	종속 항목 삽입([의존성 주입 -  Dagger, Hilt](Android_Studio/1.%20android/DI%20의존성%20주입/readme.md)) 권장 사항에 따라 저장소는 데이터 소스를 생성자의 종속 항목으로 사용함.
+	종속 항목 삽입([의존성 주입 -  Dagger, Hilt](Android_Studio/2.%20compose/lib/DI%20의존성%20주입/readme.md)) 권장 사항에 따라 저장소는 데이터 소스를 생성자의 종속 항목으로 사용함.
 
 
 

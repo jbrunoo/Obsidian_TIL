@@ -19,7 +19,7 @@ by는 getValue, setValue import해야 함.
 state 즉, 상태는 compose의 전부라고 해도 과언이 아니다.
 state의 변화를 통해 recomposition이 일어나고 UI를 변경 시킨다.
 
-StateFul vs StateLess
+Stateful vs Stateless
 내부에서 state를 관리하는지 아닌지 차이.
 stateless를 만들기 위해 state hoisting 패턴을 사용.
 호출자에게 state를 올림.
@@ -30,5 +30,3 @@ mutableStateOf vs mutableStateListOf [stackoverflow](https://stackoverflow.com/q
 즉, 새 항목이 추가되었을 때 recomposition이 되기를 바라면 복사본을 만들어 복사된 목록을 할당해주어야 함
 
 후자는 관찰 가능한 list가 생성됨. 수행하는 모든 작업에 의해 recomposition이 발생함.
-
-
