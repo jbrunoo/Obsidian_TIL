@@ -64,3 +64,8 @@ viewModel: DiceRollViewModel = viewModel()
 
 - - -
 hilt 사용 없이 viewmodel에 저장소(repository, dao) 같은 종속 항목 주입 경우 viewmodel.factory DSL을 사용해야 함 [공식문서](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factories?hl=ko#jetpack-compose)
+
+[ui 상태 저장](https://developer.android.com/topic/libraries/architecture/saving-states?hl=ko)
+compose에서 rememberSaveable, view에서 onSaveInstanceState() 있듯 
+viewModel에서 SavedStateHandle 활용
+viewmodel은 구성변경 시에는 유지되지만 시스템에서 종료되거나 사용자의 완전한 종료 등에 의한 데이터를 기억하기 위함
