@@ -11,3 +11,20 @@
 mvvm과 같은 아키텍처와 함께 사용할 수 있다.
 
 
+★ 핵심 가치 == 관심사의 분리.
+
+#### 보편적인 구현 방법
+###### data layer
+	DTO(local/remote data), DB(ROOM, DAO), Repository(Impl), DataSource(repo에서 정의한 함수들의)
+###### domain layer
+	Entity(Data Model - 실제 앱에서 쓰려는 데이터 클래스), Repository, Usecase(각 repo에 정의된 ) 
+###### presentation layer
+	UI, ViewModel, components, navigation, DI
+
+
+클린 아키텍처를 앱이 커졌을 때 추천하는데 구조별로 나누기 때문에 더 많은 코드와 파일들이 생성되기 때문.
+깔끔하게 나뉜다는 느낌을 받을 수 있으나 이점을 못느끼는 이유는 앱이 크지 않을 때 단일 소스에서 참고하는 경우 repository와 data source가 같은 역할을 하고 있다거나 repo, usecase 사이에서도 이점을 잘 못 찾기 때문.
+즉, repo에서 단일 data source가 아닌 다른 소스의 데이터도 처리해야한다거나 더 복잡할 경우 일부 repo는 다른 repo에 종속될 수도 있다. 즉, 앱이 커질수록 data source나 usecase는 단일 책임을 가지게 해야하고 repo에서 추상화 작업이 이뤄지며 repo의 impl을 data layer에서 interface를 domain layer에서 관리함으로 의존성 역전이 일어나고 dip 원칙을 지키고 있다고 볼 수 있음.
+
+ps. 멀티 모듈화를 진행한다면 위 layer를 모듈별로 나누고 app/common/core 등의 패키지에 다른 구성요소들을 포함할 수 있음 ex) di, navigation, 공통 함수, util 등
+
