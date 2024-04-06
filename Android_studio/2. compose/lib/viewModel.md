@@ -68,4 +68,9 @@ hilt 사용 없이 viewmodel에 저장소(repository, dao) 같은 종속 항목 
 [ui 상태 저장](https://developer.android.com/topic/libraries/architecture/saving-states?hl=ko)
 compose에서 rememberSaveable, view에서 onSaveInstanceState() 있듯 
 viewModel에서 SavedStateHandle 활용
-viewmodel은 구성변경 시에는 유지되지만 시스템에서 종료되거나 사용자의 완전한 종료 등에 의한 데이터를 기억하기 위함
+viewmodel은 구성변경 시에는 유지되지만(부분적인 데이터 유지) 시스템에서 종료되거나 사용자의 완전한 종료 등에 의한 데이터를 기억하기 위함
+
+- - -
+viewModel 상태를 어떻게 관리할지
+single state vs multiple state  [medium](https://medium.com/proandroiddev/android-viewmodel-single-state-or-not-d914f962d44c)
+single state는 sealed class로 state를 관리하고 그 state를 뷰모델에서 flow 등으로 불러서 .copy 이용하여 업데이트함. copy 메서드를 이용하기 때문에 불필요한 
