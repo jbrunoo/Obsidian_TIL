@@ -34,9 +34,13 @@
 즉, 컴파일 타임에 repo impl이 빌드되므로 종속성을 반전시키지만 런타임에는 구현체는 이미 컴파일되어 있고 repo 메소드가 호출되므로 적절한 흐름을 유지할 수 있음
 
 
-
 ps. 
 	하나의 app 모듈보다 App 디렉토리와 같이 모듈 별로 나누고 각 Build gradle을 구성해 준다.(멀티 모듈화)
 	mvvm과 같은 디자인 패턴은 presentation layer에서 함께 사용될 수 있다. 
 	즉, 위 layer를 모듈별로 나누고 app/common/core 등의 패키지에 다른 구성요소들을 포함할 수 있음 ex) di, navigation, 공통 함수, util 등
 
+
+![[Pasted image 20240408175323.png]]
+
+ compose에서 mapper 부분은 dto에서 확장함수로 entity 구현
+ 

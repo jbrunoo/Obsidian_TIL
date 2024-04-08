@@ -1,3 +1,3 @@
 단원 4. [안드로이드 codelab](https://developer.android.com/courses/android-basics-compose/course?hl=ko)
 [[activity_lifecycle]]
-[[App_Architecture]]
+[[Android_Architecture]]

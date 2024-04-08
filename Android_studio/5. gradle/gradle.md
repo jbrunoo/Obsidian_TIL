@@ -9,7 +9,11 @@ gradle의 빌드 프로세스는 어떻게 되는가?
 윈도우에서 .exe를 만들 듯, 안드로이드에서 .apk 파일을 만드는 과정.
 ps. apk파일은 실행 파일이 아닌 설치 파일
 
-gradle은 build.gradle과 setting.gradle 파일을 통해 원하는 소프트웨어를 빌드할 수 있음
+gradle은 setting.gradle과 build.gradle 파일을 통해 원하는 소프트웨어를 빌드할 수 있음
+setting.gradle은 프로젝트의 구성 정보를 기록하는 파일. 어떠 하위 프로젝트들이 어떤 관계로 구성되어있는지 기술
+build.gradle은 의존성, 플러그인을 설정하는 파일. 빌드 작업에 필요한 기본 설정, 동작 등 기술
+
+
 
 gradle은 task를 기반으로 빌드를 진행
 task는 build.gradle에 정의된 가장 작은 작업 단위

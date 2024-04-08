@@ -1,4 +1,4 @@
-list, set, map 등
+colletion == list, set, map 등
 
 
 collection 함수 - 표준 라이브러리에서 제공하며 확장 함수 형태로 제공.
