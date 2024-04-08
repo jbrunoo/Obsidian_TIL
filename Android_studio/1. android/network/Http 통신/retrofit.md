@@ -12,6 +12,7 @@ Converters can be added to support other types. Six sibling modules adapt popula
 - [JAXB](https://docs.oracle.com/javase/tutorial/jaxb/intro/index.html): `com.squareup.retrofit2:converter-jaxb`
 - Scalars (primitives, boxed, and String): `com.squareup.retrofit2:converter-scalars`
 
+- [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) : 위 자바 라이브러리들은 data class의 default value를 무시하고 0, null로 초기화
 
 [블로그](https://velog.io/@jeongminji4490/Android-Retrofit)
 
