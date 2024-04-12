@@ -20,7 +20,7 @@ Converters can be added to support other types. Six sibling modules adapt popula
 #### retrofit 구현 - 3가지 클래스
 - Data Class
 - Http 작업 정의하는 Interface
-- Retrofit.Builder 선언한 Object
+- Retrofit.Builder 선언한 Object(or ApiModule with hilt)
 
 Manifest 인터넷 권한
 모듈 수준 build.gradle에 retrofit 라이브러리와 conveter 추가(gson 사용)

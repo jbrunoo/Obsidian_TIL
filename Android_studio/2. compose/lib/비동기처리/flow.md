@@ -59,3 +59,7 @@ onStop -> onStart 사이처럼 앱이 백그라운드에 있을 때 전자는 �
 	뒤늦게 라디오 주파수를 맞추면 청취 시점부터 들을 수 있음(생산자가 소비자의 소비를 신경쓰지 않고 생산)
 
 
+- - -
+[kotlin flows in practice](https://www.youtube.com/watch?v=fSB6_KE95bU&t=75s)
+
+clean architecture에서 어느 layer or class에서 flow로 변환해야 하는지? (사람마다 다르게 구현해둠)
