@@ -7,6 +7,21 @@
 	특히, flow에서는 collectAsState() -> collectAsStateWithLifecycle()로 수명주기를 인식하고 앱 리소스를 절약할 수 있음
 
 
+- - -
+[kotlin flows in practice](https://www.youtube.com/watch?v=fSB6_KE95bU&t=75s)
+
+clean architecture에서 어느 layer or class에서 flow로 변환해야 하는지? (사람마다 다르게 구현해둠)
+
+flow는 데이터 스트림의 일종이고 구성은 producer - intermediar - consumer로 이루어진다.
+producer는 flow {  } 블록 내부에서 emit을 통해 
+
+
+
+
+
+- - -
+
+
 ###### [mutableState vs mutableStateFlow](https://stackoverflow.com/questions/70217780/mutablestate-vs-mutablestateflow)
 	state는 compose api로 ui 를 recomposition 하기 위한 목적
 	
@@ -60,6 +75,3 @@ onStop -> onStart 사이처럼 앱이 백그라운드에 있을 때 전자는 �
 
 
 - - -
-[kotlin flows in practice](https://www.youtube.com/watch?v=fSB6_KE95bU&t=75s)
-
-clean architecture에서 어느 layer or class에서 flow로 변환해야 하는지? (사람마다 다르게 구현해둠)
