@@ -9,15 +9,22 @@
 
 - - -
 [kotlin flows in practice](https://www.youtube.com/watch?v=fSB6_KE95bU&t=75s)
+영상에서 보듯, 데이터를 직접 확인하고 가져오는 작업이 아닌 파이프라인을 설치하여 데이터를 자동으로 수집하고 수도꼭지를 열고 닫음으로써 조절함. 즉, 데이터를 관찰하는 reactive programming.
+코루틴의 suspend 함수로 이루어져 코루틴과 함께 비동기처리에 용이함.
 
 clean architecture에서 어느 layer or class에서 flow로 변환해야 하는지? (사람마다 다르게 구현해둠)
 
-flow는 데이터 스트림의 일종이고 구성은 producer - intermediar - consumer로 이루어진다.
-producer는 flow {  } 블록 내부에서 emit을 통해 
-
-
-
-
+flow는 데이터 스트림의 일종이고 구성은 producer - intermediary - consumer로 이루어진다.
+producer
+	flow {  } 블록 내부에서 emit을 통해 데이터를 생성
+	datasource
+intermediary
+	생성된 데이터를 수정(map(변형), filter(필터링), onEach(연산) 등)
+	repository
+consumer
+	collect를 통해 생성된 데이터를 소비
+	ui(or viewmodel)
+	ps. 생성된 데이터를 viewmodel에서 상태홀더 클래스인 stateFlow를 통해 보유
 
 - - -
 

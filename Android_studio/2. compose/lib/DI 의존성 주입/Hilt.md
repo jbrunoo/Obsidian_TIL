@@ -43,9 +43,14 @@ activity나 fragment에서 viewModel을 주입받을 때, activity ktx, fragment
     javaCopy code
     
     `// 예시: Hilt를 사용한 필드 주입 class MyClass {     @Inject     private lateinit var dependency: Dependency }`
-    
 
 
+ps. 메소드나 필드 주입은 프로젝트 내에서 클래스의 인스턴스를 바로 제공해줄 수 있어야 사용할 수 있음.
+즉, 추상 클래스, 인터페이스(어느 구현체가 객체로 사용될지 알 수 없기 때문)로 구현되거나 room, retrofit 같은 외부 라이브러리는 hilt module을 추가하고 생성자 주입을 통해 의존성을 전달함. 이 과정에서 constructor를 가질 수 없는 추상 클래스, 인터페이스는 @Binds로, 프로젝트 내에서 소유하지 않거나 빌드 패턴으로 인스턴스를 생성해야 하는 경우 @Provides를 사용함.
+++ 특히 @Provides만 포함되는 모듈의 경우 object로 생성 시, providers get optimized and almost in-lined in generated code 라고 적혀있음, @Binds는 class, interface, abstract class로 생성함
++++ 
+
+- - -
 이러한 의존성 주입은 코드의 유지보수성을 향상시키고 테스트 가능한 코드를 작성하는데 도움
 또한 객체 간의 결합도를 낮춰 시스템을 확장하거나 변경하기 쉬움
 
