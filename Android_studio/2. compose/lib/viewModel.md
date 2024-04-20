@@ -71,6 +71,26 @@ viewModel에서 SavedStateHandle 활용
 viewmodel은 구성변경 시에는 유지되지만(부분적인 데이터 유지) 시스템에서 종료되거나 사용자의 완전한 종료 등에 의한 데이터를 기억하기 위함
 
 - - -
-viewModel 상태를 어떻게 관리할지
+viewModel 상태를 어떻게 관리할지 (feat. MVVM vs MVI)
 single state vs multiple state  [medium](https://medium.com/proandroiddev/android-viewmodel-single-state-or-not-d914f962d44c)
 single state는 sealed class로 state를 관리하고 그 state를 뷰모델에서 flow 등으로 불러서 .copy 이용하여 업데이트함. copy 메서드를 이용하기 때문에 불필요한 
+
+- - -
+[medium - Mastering Android ViewModels](https://proandroiddev.com/mastering-android-viewmodels-essential-dos-and-donts-part-1-%EF%B8%8F-bdf05287bca9)
+1. Avoid initializing state in the `init {}` block.
+2. Avoid exposing mutable states.
+3. Use update{} when using MutableStateFlows:
+4. Lazily inject dependencies in the constructor.
+5. Embrace more reactive and less imperative coding.
+6. Avoid initializing the ViewModel from the outside world.
+7. Avoid passing parameters from the outside world.
+8. Avoid hardcoding Coroutine Dispatchers.
+9. Unit test your ViewModels.
+10. Avoid exposing suspended functions.
+11. Leverage the `onCleared()` callback in ViewModels.
+12. Handle process death and configuration changes.
+13. Inject UseCases, which call Repositories, which in turn call DataSources.
+14. Only include domain objects in your ViewModels.
+15. Leverage `shareIn()` and `stateIn()` operators to avoid hitting the upstream multiple times.
+
+
