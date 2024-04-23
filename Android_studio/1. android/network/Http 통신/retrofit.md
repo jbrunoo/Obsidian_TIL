@@ -36,12 +36,14 @@ Manifest 인터넷 권한
 	@ + Path, Query, QueryMap, Body, FormUrlEncoded, Field, Header, Url
 
 1. @Path
-	URL의 경로를 동적으로 지정할 때. 
+	URL의 경로를 동적으로 지정할 때.
+	path param -> /{param}
 	동적으로 들어갈 부분을 중괄호로 감싸고 변수에 어노테이션 추가.
 	Query 뒤에 Path 추가하면 오류남. 모두 Path로 받아주었음.
 
 2. @Query
 	서버 요청 시 query를 키로 매개변수를 값으로 데이터 전달.
+	key param -> /?param=
 	```kotlin
 // 경로에 ?를 이용해 데이터 전달
 @GET("${BuildConfig.OPEN_API_KEY}/json/realtimeStationArrival/?START_INDEX=0&END_INDEX=5")
@@ -108,3 +110,9 @@ Call은 응답 결과의 성공 유무에 직관적인 처리. Response는 조�
 RxJava 또는 Coroutine을 사용하여 처리하면 앞에 내용들을 작성할 필요 없긴 함.
 
 
+- - -
+okhttp 라이브러리를 같이 쓰는 이유
+	Interceptor 기능 [#1](https://medium.com/@myofficework000/retrofit-interceptors-for-beginners-76943e987ad5)
+		 HTTP 호출을 중간에서 가로챌 수 있는 Interceptor 기능 제공
+		 API 호출 전후에 특정 로직을 실행할 수 있으며, 예를 들어 로깅, 헤더 추가, 캐싱 정책 설정 등이 가능  
+	서버 통신 시간 조절

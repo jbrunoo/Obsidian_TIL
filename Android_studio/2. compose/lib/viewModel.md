@@ -94,3 +94,5 @@ single state는 sealed class로 state를 관리하고 그 state를 뷰모델에�
 15. Leverage `shareIn()` and `stateIn()` operators to avoid hitting the upstream multiple times.
 
 
+init 대신 변수 자체에서 flow emit {}.stateIn으로 데이터 로드 하기
+

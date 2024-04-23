@@ -9,22 +9,35 @@
 
 - - -
 [kotlin flows in practice](https://www.youtube.com/watch?v=fSB6_KE95bU&t=75s)
+[kotlin blog](https://medium.com/hongbeomi-dev/%EC%A0%95%EB%A6%AC-%EC%BD%94%ED%8B%80%EB%A6%B0-flow-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-android-dev-summit-2021-3606429f3c5f)
 영상에서 보듯, 데이터를 직접 확인하고 가져오는 작업이 아닌 파이프라인을 설치하여 데이터를 자동으로 수집하고 수도꼭지를 열고 닫음으로써 조절함. 즉, 데이터를 관찰하는 reactive programming.
 코루틴의 suspend 함수로 이루어져 코루틴과 함께 비동기처리에 용이함.
 
-clean architecture에서 어느 layer or class에서 flow로 변환해야 하는지? (사람마다 다르게 구현해둠)
+android에서 데이터 소스나 레포지토리가 생산자, ui가 소비자 역할
+dataStore, room, retrofit, workManager 등 데이터 소스 라이브러리는 대부분 Flow와 통합되어 있음 
+(직접 만드려면 flow builder 활용)
 
 flow는 데이터 스트림의 일종이고 구성은 producer - intermediary - consumer로 이루어진다.
 producer
 	flow {  } 블록 내부에서 emit을 통해 데이터를 생성
+	데이터 소스 라이브러리는 Flow 통합되어 flow로 데이터 감싸서 받으면 됨
 	datasource
 intermediary
-	생성된 데이터를 수정(map(변형), filter(필터링), onEach(연산) 등)
+	생성된 데이터를 수정(map(변형), filter(필터링), onEach(연산) 등) - 중간 연산자()
 	repository
 consumer
-	collect를 통해 생성된 데이터를 소비
+	collect를 통해 생성된 데이터를 소비 - terminal 연산자()
 	ui(or viewmodel)
 	ps. 생성된 데이터를 viewmodel에서 상태홀더 클래스인 stateFlow를 통해 보유
+
+
+위처럼 필요에 따라 생성되고 관찰되는 중에만 데이터를 전송하는 flow를 cold flow라고 함
+
+flow 수집 시 고려사항 -> 백그라운드, 구성 변경
+stateFlow는 물탱크 역할.
+flow를 stateFlow 변환 시 .stateIn 연산자 함께 사용 가능
+구성 변경 시에는 flow가 끊기지 않게, 백그라운드에서는 flow가 끊기게 한다면?
+-> .stateIn 연산자에 started 매개변수는 WhileSubscribed(5000)처럼 시간 초과를 사용하여 flow 유지를 관리
 
 - - -
 
