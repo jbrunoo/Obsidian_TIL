@@ -43,6 +43,7 @@ flow를 stateFlow 변환 시 .stateIn 연산자 함께 사용 가능
 
 
 ###### [mutableState vs mutableStateFlow](https://stackoverflow.com/questions/70217780/mutablestate-vs-mutablestateflow)
+[state vs stateFlow](https://www.youtube.com/watch?v=T8vApYJlW8o)
 	state는 compose api로 ui 를 recomposition 하기 위한 목적
 	
 	flow는 코루틴 api로 본 목적은 코루틴의 비동기 스트림 api
