@@ -96,3 +96,10 @@ single state는 sealed class로 state를 관리하고 그 state를 뷰모델에�
 
 init 대신 변수 자체에서 flow emit {}.stateIn으로 데이터 로드 하기
 
+- - -
+savedStateHandle 사용 이유. 값 저장도 있고 navigation과 함께 인수 전달 가능
+[참고 블로그](https://medium.com/@apfhdznzl/navigation-component%EC%97%90%EC%84%9C-fragment%EB%81%BC%EB%A6%AC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EB%8B%AC%ED%95%98%EA%B8%B0-61488354352b) [참고 블로그](https://developer88.tistory.com/entry/Route-%EC%97%90%EC%84%9C-%EB%84%98%EC%96%B4%EC%98%A8-%EA%B0%92%EC%9D%84-ViewModel-savedStateHandle-%EB%A1%9C-%EB%B0%9B%EB%8A%94-%EB%B0%A9%EB%B2%95-Jetpack-Compose-Navigaion)
+
+지금까지는 navigation에서 navBackStackEntry에서 arguments로 넘겨줬는데
+깊은 로직까진 모르겠지만 viewmodel savedStateHandle에 navBackStackEntry 정보도 함께 접근할 수 있는 것 같다. 
+
