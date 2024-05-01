@@ -98,3 +98,5 @@ onStop -> onStart 사이처럼 앱이 백그라운드에 있을 때 전자는 �
 - - -
 [flow와 suspend 함수](https://stackoverflow.com/questions/76030366/when-to-use-suspend-function-and-flow-together-or-seperate-in-kotlin)
 
+[collect와 luanchIn](https://handstandsam.com/2021/02/19/the-best-way-to-collect-a-flow-in-kotlin-launchin/)
+
