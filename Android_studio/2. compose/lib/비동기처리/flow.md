@@ -100,3 +100,93 @@ onStop -> onStart 사이처럼 앱이 백그라운드에 있을 때 전자는 �
 
 [collect와 luanchIn](https://handstandsam.com/2021/02/19/the-best-way-to-collect-a-flow-in-kotlin-launchin/)
 
+- - -
+
+```kotlin
+override fun fetchRecentEventsFlow(endIndex: Int): Flow<Resource<List<RecentEventImage>>> {
+        return eventRemoteDataSource.fetchRecentEventsFlow(endIndex = endIndex)
+            .map { eventResponse ->
+                Resource.Loading<List<RecentEventImage>>()
+                Timber.d("Loading")
+                val result = eventResponse.culturalEventInfo.result
+                val row = eventResponse.culturalEventInfo.row
+
+                if (result.code == "INFO-000") {
+                    Timber.d("SUCCESS")
+                    val eventImages = row.map { it.toRecentEventImage() }
+                    Resource.Success(eventImages)
+                } else {
+                    handleResult(result = result)
+                }
+            }
+    }
+```
+
+DataSource에서 flow를 반환하다보니 .map 연산자를 통해 Resource로 감싸고 dto -> entity로 변경해주는 작업
+Resource.Loading의 타입을 IDE에서 읽지 못하는 오류 및 Success만 수행됨. emit으로 특정 값을 방출하는 것이 아니기 때문에 전체를 수행한 것 같음
+
+```kotlin
+return flow {
+            emit(Resource.Loading())
+            eventRemoteDataSource.fetchEventsByCodeNameFlow(codeName = codeName, title = title)
+                .map { eventResponse ->
+                    val result = eventResponse.culturalEventInfo.result
+                    val row = eventResponse.culturalEventInfo.row
+
+                    if (result.code == "INFO-000") {
+                        Timber.d("SUCCESS")
+                        val events = row.map { it.toEvent() }
+                        Resource.Success(events)
+                    } else {
+                        handleResult(result = result)
+                    }
+                }.collect {
+                    emit(it)
+                }
+        }
+
+```
+
+flow를 빌드한 후 emit 해주었음. 하지만 이미 flow 값을 가져왔다보니 map한 결과를 다시 collect 해야하는(이중 flow) 번거로움 및 repository에서 flow를 소비해도 되는가에 대한 의문이 듦.
+
+```kotlin
+return eventRemoteDataSource.fetchRecentEventsFlow(endIndex = endIndex)
+            .transform { eventResponse ->
+                emit(Resource.Loading())
+                Timber.d("Loading")
+                val result = eventResponse.culturalEventInfo.result
+                val row = eventResponse.culturalEventInfo.row
+
+                if (result.code == "INFO-000") {
+                    Timber.d("SUCCESS")
+                    val eventImages = row.map { it.toRecentEventImage() }
+                    emit(Resource.Success(eventImages))
+                } else {
+                    emit(handleResult(result = result))
+                }
+            }
+```
+
+transform이란 새로운 연산자를 찾았음. 이미 만들어진 flow를 바꾸는 연산자로 새로운 emit을 만들어줌
+
+근데 내부 로직이 위의 처리와 같긴 함.
+
+```kotlin
+public inline fun <T, R> Flow<T>.transform(
+    @BuilderInference crossinline transform: suspend FlowCollector<R>.(value: T) -> Unit
+): Flow<R> = flow { // Note: safe flow is used here, because collector is exposed to transform on each operation
+    collect { value ->
+        // kludge, without it Unit will be returned and TCE won't kick in, KT-28938
+        return@collect transform(value)
+    }
+}
+```
+
+map의 내부 로직도 transform 후 emit 
+```kotlin
+public inline fun <T, R> Flow<T>.map(crossinline transform: suspend (value: T) -> R): Flow<R> = transform { value ->
+    return@transform emit(transform(value))
+}
+```
+
+ps. return@ 부분은 람다식에서 return 하기 위함.

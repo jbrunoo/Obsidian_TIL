@@ -79,7 +79,7 @@ class ApiService {
 
 // hilt 이용
 // ViewModel 
-	class MyViewModel @Inject constructor(private val repository: MyRepository) : ViewModel() { // ViewModel의 로직 구현 
+class MyViewModel @Inject constructor(private val repository: MyRepository) : ViewModel() { // ViewModel의 로직 구현 
 } 
 // Repository 
 class MyRepository @Inject constructor(private val apiService: ApiService) { 
