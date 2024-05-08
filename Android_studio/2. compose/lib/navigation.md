@@ -234,3 +234,18 @@ popUpTo 쓰기 나름인 듯 하다.
 
 nested navigation
 [github](https://github.com/stevdza-san/NestedNavigationBottomBarDemo)
+
+multi nested navigation
+[youtube](https://www.youtube.com/watch?v=BvikKQkYGuc)
+
+같은 composable을 공유하기 위해서 각 navhost를 만듦.
+프로젝트에서 다른 navHost에 있는 바텀 바를 가져오고 싶었는데 
+ex) rootNavHost, homeNavHost, eventNavHost
+homeNavHost의 바텀 바를 eventNavHost에도 사용하고 싶었는데
+바텀 바는 가져올 수 있으나 homeNavCotroller를 eventNavHost로 전달해줘도 사용이 안되었음.
+그래서 아직 각 controller와 route를 어떻게 관리해야할지 좀 더 고민해 봐야 할 것 같음.
+
+또한 viewmodel savedStateHandle에서 argument를 전달받는데
+navhost가 다르기 때문에 startDestination을 보통 상위 루트 이름으로 지정하다보니
+composable의 경로와 달라지게 됨. 
+
