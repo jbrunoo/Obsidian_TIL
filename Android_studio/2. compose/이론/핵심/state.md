@@ -18,6 +18,7 @@ by는 getValue, setValue import해야 함.
 - -- 
 state 즉, 상태는 compose의 전부라고 해도 과언이 아니다.
 state의 변화를 통해 recomposition이 일어나고 UI를 변경 시킨다.
+state 변화를 어떻게 알아차리는가? -> snapShot 시스템을 이용
 
 Stateful vs Stateless
 내부에서 state를 관리하는지 아닌지 차이.

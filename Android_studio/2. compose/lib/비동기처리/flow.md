@@ -191,5 +191,7 @@ public inline fun <T, R> Flow<T>.map(crossinline transform: suspend (value: T) -
 
 ps. return@ 부분은 람다식에서 return 하기 위함.
 
+- - -
+여러 flow의 결합 (merge, zip, combine) [참고](https://kt.academy/article/cc-flow-combine)
 
 .combine()

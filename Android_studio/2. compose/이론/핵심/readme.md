@@ -10,3 +10,5 @@ compose 간략 요약
 	state를 바꾸는 트리거가 되는 행위 - event(버튼 클릭 등)
 	state의 변경에 따른 화면의 다시 그리는 작업 - recomposition
 	composable 밖에서 화면 상태를 변경 시키는 것 - side effect(스낵바 표시, 다른 화면 이동 등)
+
+ps. state의 변경을 알아차리는 방법 - snapShot 시스템
