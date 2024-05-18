@@ -46,3 +46,73 @@ Text(text = outputFeature0.toString())
 Text(text = "Predicted Class: ${outputFeature0.joinToString(", ")}")
 ```
 
+
+- - - 
+
+오랜만에 다시 써본 라이브러리
+
+```kotlin
+fun classify(context: Context, imageBitmap: ImageBitmap, imageProcessor: ImageProcessor): Int {
+    val model = MnistModel.newInstance(context)
+    var tensorImage = TensorImage(DataType.UINT8)
+    tensorImage.load(imageBitmap.asAndroidBitmap()) // tensorImage에 compose bitmap 없음
+    tensorImage = imageProcessor.process(tensorImage)
+
+    // Creates inputs for reference.
+    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 28, 28, 1), DataType.UINT8)
+//        val byteBuffer = ByteBuffer.allocateDirect()
+    Log.d("tensorImage buffer shape", tensorImage.buffer.toString())
+    Log.d("shape", inputFeature0.buffer.toString())
+    inputFeature0.loadBuffer(tensorImage.buffer)
+
+    // Runs model inference and gets result.
+    val outputs = model.process(inputFeature0)
+    val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+    Log.d("outputFeature0.floatArray", "${outputFeature0.floatArray}")
+    Log.d("outputFeature0.intArray", "${outputFeature0.intArray}")
+
+    model.close()
+    return outputFeature0.intArray[0]
+}
+
+
+fun drawToBitmap(customPaths: List<CustomPath>): ImageBitmap {
+    val drawScope = CanvasDrawScope()
+    val size = Size(400f, 400f) // simple example of 400px by 400px image
+    val bitmap = ImageBitmap(size.width.toInt(), size.height.toInt())
+    val canvas = Canvas(bitmap)
+
+    drawScope.draw(
+        density = Density(1f),
+        layoutDirection = LayoutDirection.Ltr,
+        canvas = canvas,
+        size = size
+    ) {
+        customPaths.forEach { customPath ->
+            val path = Path().apply {
+                moveTo(customPath.start.x, customPath.start.y)
+                lineTo(customPath.end.x, customPath.end.y)
+            }
+            drawPath(
+                path = path,
+                color = customPath.color,
+                alpha = customPath.alpha,
+                style = Stroke(width = customPath.strokeWidth.toPx())
+            )
+        }
+    }
+    return bitmap
+}
+
+```
+
+```kotlin
+ D  java.nio.DirectByteBuffer[pos=0 lim=9408 cap=9408]
+ D  java.nio.DirectByteBuffer[pos=0 lim=3136 cap=3136]
+ 
+java.lang.IllegalArgumentException: The size of byte buffer and the shape do not match.
+
+```
+
+로그 상 inputFeature0 byteBuffer가 
