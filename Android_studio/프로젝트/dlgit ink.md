@@ -140,6 +140,17 @@ byteBuffer.putFloat(normalizedPixelValue)
 return byteBuffer  
 }
 
+val imageProcessor = ImageProcessor.Builder()  
+.add(NormalizeOp(0.0f, 255.0f)) // 이 줄 추가 안해서 입력값 달랐음  
+.add(  
+ResizeOp(  
+28,  
+28,  
+ResizeOp.ResizeMethod.BILINEAR  
+)  
+) // RGB 이미지만 resizeOp 가능, grayScale 전 실행  
+// .add(TransformToGrayscaleOp()) // 회색조 이미지, 라이브러리 tensorflow lite support 0.3.1 필요  
+.build()
 
 고민한 부분
 1. 실시간 draw를 어떻게 할지?
