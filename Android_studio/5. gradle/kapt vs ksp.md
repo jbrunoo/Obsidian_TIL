@@ -20,3 +20,14 @@
 대부분 지원함. room, moshi, rxhttp, koin, glide, dagger, hilt, etc..
 
 
+- - -
+ksp 관련
+kapt와 같이 쓸 수 있으나 kapt보다 후에 선언되어야 함.
+kotlin과 호환 에러 있음.
+
+`e: [ksp] InjectProcessingStep was unable to process 'DigitClassifier(error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.`
+kotlin 1.9.0 ksp 1.9.0-1.0.12에서 에러
+1.9.10, 1.9.10-1.0.13에서 해결된다는 글을 봤지만 되지 않음.
+viewbinding을 inject할 때 문제 났다는 글과 함께 kapt는 빌드 된다는 이슈를 읽음.
+머신러닝 모델을 inject하는데도 문제가 생기나 봄. 경로를 직접 지정해주는 방식이 있었으나 kapt로 마이그레이션했음.
+
