@@ -251,3 +251,10 @@ return maxPos
 black 배경에 white로 그리니까 제대로 인식됨.. 흠
 
 
+// lazy column sticky Header 문제
+auto scroll 구현에서 item 뿐만 아니라 sticky header는 고정 인데도 이 높이만큼 scroll을 함.
+listLazyState의 초기 값을 1로 주면 해결 되기야 하겠지만..
+scroll되면 sticky Header를 가림. [스택오버플로우](https://stackoverflow.com/questions/72604009/jetpack-compose-lazycolumn-items-scroll-over-stickyheader-and-does-not-scroll-to)
+
+이건 compose의 문제인지 매우 궁금. 해결방법으로 surface로 감싸는 방법을 보여주는데
+이전 프로젝트에서 스택오버플로우에 내가 남겼던 card 관련 문제에서도 surface로 감싸서 해결 가능하다는 방법이 있었음. [여기](https://stackoverflow.com/questions/78386007/android-compose-materialtheme-colorscheme-background-does-not-apply-in-card-cont)
