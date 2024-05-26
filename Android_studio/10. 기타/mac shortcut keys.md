@@ -25,3 +25,11 @@ cmd + E : 최근 파일 열기
 shift + shift : 전체 파일에서 검색
 
 
+dock 숨긴 뒤 마우스 올리면 빠르게 뜸 (float뒤 값 수정하면 됨)
+```shell
+defaults write com.apple.dock autohide -bool true && defaults write com.apple.dock autohide-delay -float 0.01 && defaults write com.apple.dock autohide-time-modifier -float 0.01 && killall Dock
+```
+원래대로
+```shell
+defaults delete com.apple.dock autohide && defaults delete com.apple.dock autohide-delay && defaults delete com.apple.dock autohide-time-modifier && killall Dock
+```
