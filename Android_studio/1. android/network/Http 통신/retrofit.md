@@ -116,3 +116,55 @@ okhttp 라이브러리를 같이 쓰는 이유
 		 HTTP 호출을 중간에서 가로챌 수 있는 Interceptor 기능 제공
 		 API 호출 전후에 특정 로직을 실행할 수 있으며, 예를 들어 로깅, 헤더 추가, 캐싱 정책 설정 등이 가능  
 	서버 통신 시간 조절
+
+
+- - -
+즉, 구현해야할 클래스는 apiService, Retrofit, (Okhttp)Client, Interceptor가 있음.
+
+ApiService 인터페이스에서 API endPoint를 정의하고
+Retrofit에서 위 인터페이스를 구현하여 네트워크를 호출 + url, 직렬화(Gson, Moshi, kotlinx.serialization 등)
+네트워크 요청을 위해 OkHttpClient가 네트워크 요청을 수행하기 위한 HttpClient이며
+Interceptor에서 네트워크 요청이나 응답을 가로채 수정할 수 있는 기능을 제공(공통 헤더 추가, 응답 로깅 등등)
+
+di 모듈에 정의한 부분을 보면 다음과 같음
+```kotlin
+@Module
+@InstallIn(SingletonComponent::class)
+object ApiModule {
+    @Provides
+    @Singleton
+    fun provideNetworkJson(): Json = Json {
+        ignoreUnknownKeys = true
+    }
+
+    @Provides
+    @Singleton
+    fun provideQueryInterceptor(): QueryInterceptor {
+        return QueryInterceptor()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        queryInterceptor: QueryInterceptor
+    ): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(queryInterceptor)
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideApiService(networkJson: Json, okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
+            .client(okHttpClient)
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofitService(retrofit: Retrofit): EventService {
+        return retrofit.create(EventService::class.java)
+    }
+}
+```
