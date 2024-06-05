@@ -195,3 +195,8 @@ ps. return@ 부분은 람다식에서 return 하기 위함.
 여러 flow의 결합 (merge, zip, combine) [참고](https://kt.academy/article/cc-flow-combine)
 
 .combine()
+
+.onEach() vs .onStart()
+전자는 flow가 downstream에 be emitted 전에 코드 실행
+후자는 flow가 be collected 전에 실행
+
