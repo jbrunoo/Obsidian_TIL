@@ -33,7 +33,7 @@ mutableStateOf vs mutableStateListOf [stackoverflow](https://stackoverflow.com/q
 후자는 관찰 가능한 list가 생성됨. 수행하는 모든 작업에 의해 recomposition이 발생함.
 
 - - -
-그 많은 State를 어떻게 관리할지 [참고 블로그](https://velog.io/@cksgodl/AndroidCompose-Compose%EC%97%90%EC%84%9C%EC%9D%98-result-Intent-%EB%B0%8F-State%EA%B4%80%EB%A6%AC)
+그 많은 State를 어떻게 관리할지 [참고 블로그 #1](https://velog.io/@cksgodl/AndroidCompose-Compose%EC%97%90%EC%84%9C%EC%9D%98-result-Intent-%EB%B0%8F-State%EA%B4%80%EB%A6%AC) [참고 블로그 #2](https://8iggy.tistory.com/275)
 블로그 설명처럼 
 App 전반에 걸쳐진 navController, scaffoldState,
 비즈니스 로직에 데이터들의 state, 화면 ui 로직의 state 값이 있다
