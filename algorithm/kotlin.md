@@ -14,3 +14,5 @@ val even = num_list.filterIndexed {i, _ -> i % 2 != 0 }.sum()
 ```
 sumOf는 인라인 함수이나 selector 람다가 인라이닝 되지 않아서 발생할 것이라고 추측.
 
+
+[kotlin 입출력](https://uknowblog.tistory.com/434)
