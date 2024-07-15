@@ -33,3 +33,10 @@ defaults write com.apple.dock autohide -bool true && defaults write com.apple.do
 ```shell
 defaults delete com.apple.dock autohide && defaults delete com.apple.dock autohide-delay && defaults delete com.apple.dock autohide-time-modifier && killall Dock
 ```
+
+
+#### 이전 작업 파일 보기
+cmd + E
+
+#### for 문 숏컷
+iter
