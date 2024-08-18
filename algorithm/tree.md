@@ -18,8 +18,10 @@ ps. AVL 트리는 레드블랙트리보다 더 엄격하게 균형이 잡혀있�
 정점과 간선의 그래프를 코딩으로 표현하려면 인접행렬 or 인접리스트
 
 인접행렬 : 정점과 간선의 관계를 나타내는 bool 타입 정사각형 행렬
+`val adjMatrix = Array(n + 1) { IntArray(n + 1) { 0 } } `
 
 인접리스트(adj) : 연결리스트를 여러 개 구성. 각 정점과 연결된 정점을 리스트에 추가.
+`val adjList = Array(n + 1) { mutableListOf<Int>() }`
 
 차이
 공간복잡도 : 인접행렬(V^2), 인접리스트(V+E)
@@ -43,10 +45,10 @@ fun main() {
     map[1][1] = 0
     map[2][0] = 0
 
-    dfs(0, 0, map, bool)
+    graph(0, 0, map, bool)
 }
 
-fun dfs(y: Int, x: Int, map: Array<IntArray>, bool: Array<BooleanArray>) {
+fun graph(y: Int, x: Int, map: Array<IntArray>, bool: Array<BooleanArray>) {
     bool[y][x] = true
     println("$y $x")
     val dy = listOf(-1, 0, 1, 0)
@@ -55,12 +57,65 @@ fun dfs(y: Int, x: Int, map: Array<IntArray>, bool: Array<BooleanArray>) {
     for(i in 0..3) {
         val ny = y + dy[i]
         val nx = x + dx[i]
-
+	
         if(ny < 0 || nx < 0 || ny >= map.size || nx >= map[0].size ) continue
         if(map[ny][nx] == 0) continue
         if(bool[ny][nx]) continue
-        dfs(ny, nx, map, bool)
+        graph(ny, nx, map, bool)
     }
 
 }
 ```
+
+
+dfs
+```kotlin
+import java.util.*  
+  
+val arr = Array(101) { IntArray(101) }  
+val bool = Array(101) { BooleanArray(101) { false } }  
+  
+fun main() = with(System.`in`.bufferedReader()) {  
+    val (n, m) = readLine().split(" ").map { it.toInt() }  
+  
+    repeat(n) { i ->  
+        val row = StringTokenizer(readLine())  
+  
+        for(j in 1..n) {  
+            arr[i + 1][j] = row.nextToken().toInt()  
+        }  
+    }  
+  
+    var cnt = 0  
+    for(i in 1..m) {  
+        for(j in 1..n) {  
+            if(arr[i][j] == 1 && !bool[i][j]) {  
+                dfs(i, j)  
+                cnt++  
+            }  
+        }  
+    }  
+  
+    println(cnt)  
+}  
+  
+fun dfs(y: Int, x: Int) {  
+    bool[y][x] = true  
+    val dy = listOf(1, 0, -1, 0)  
+    val dx = listOf(0, 1, 0, -1)  
+  
+    for(i in 0..3) {  
+        val ny = y + dy[i]  
+        val nx = x + dx[i]  
+  
+        if(ny < 1 || nx < 1 || ny >= arr.size || nx >= arr[0].size) continue  
+        if(arr[ny][nx] == 1 && !bool[ny][nx]) {  
+            println("???")  
+            dfs(ny, nx)  
+        }  
+    }  
+    return  
+}
+```
+
+
