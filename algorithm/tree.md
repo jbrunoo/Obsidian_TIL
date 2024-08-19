@@ -68,7 +68,7 @@ fun graph(y: Int, x: Int, map: Array<IntArray>, bool: Array<BooleanArray>) {
 ```
 
 
-dfs
+dfs(depth first search)
 ```kotlin
 import java.util.*  
   
@@ -118,4 +118,29 @@ fun dfs(y: Int, x: Int) {
 }
 ```
 
+```kotlin
+// 돌다리
+fun dfs(here: Int) {
+	visited[here] = true
 
+	for(i in adj) {
+		if(!visited[here]) {
+			dfs(i)
+		}
+	}
+}
+
+// Go
+fun dfs(here: Int) {
+	if(visited[here]) return
+	visited[here] = true
+
+	for(i in adj) {
+		dfs(i)
+	}
+}
+
+```
+
+
+bfs(breadth first search)
