@@ -143,4 +143,62 @@ fun dfs(here: Int) {
 ```
 
 
+ps. 좌표 평면과 배열의 차이. y, x 축으로 두는게 나은 이유.
+전산 쪽에서 원점은 좌측상단 ex) 모니터
+즉, 첫째는 원점의 기준이 어디인지 생각하고
+두번쨰는 인덱스를 양수로 세기때문에 y축에서 아래로 내려가면 인덱스는 커지지만 값은 작아지는 의미.
+그래서 dy, dx를 북 동 남 서 기준(시계 방향)으로 보게 되면 (-1, 0), (0, 1), (0, 1), (-1, 0)이 됨.
+이외에도 첫번째 차원을 기준으로 하기 때문에 속도가 미세하기 더 빠르다고 함.
+
+
 bfs(breadth first search)
+```kotlin
+import java.util.*  
+  
+val map = Array(101) { IntArray(101) }  
+val visited = Array(101) { IntArray(101) }  
+val dy = intArrayOf(-1, 0, 1, 0)  
+val dx = intArrayOf(0, 1, 0, -1)  
+  
+fun main() = with(System.`in`.bufferedReader()) {  
+    val (n, m) = readLine().split(" ").map { it.toInt() }  
+    val (s, e) = readLine().split(" ").map { it.toInt() }  
+    val (x, y) = readLine().split(" ").map { it.toInt() }  
+  
+    repeat(n) { i ->  
+        val st = StringTokenizer(readLine())  
+        for(j in 0 until m) {  
+            map[j][i] = st.nextToken().toInt()  
+        }  
+    }  
+    bfs(e, s)  
+    print(visited[y][x])  
+}  
+  
+fun bfs(sy: Int, sx: Int) {  
+    val queue: Queue<Pair<Int, Int>> = LinkedList()  
+    visited[sy][sx] = 1  
+    queue.add(Pair(sy, sx))  
+  
+    while (queue.isNotEmpty()) {  
+        val (y, x) = queue.poll()  // queue의 첫 인덱스로 연결 component 확인
+  
+        for(i in 0..3) {  
+            val ny = y + dy[i]  
+            val nx = x + dx[i]  
+  
+            if(nx < 0 || ny < 0 || nx >= 5 || ny >= 5) continue  
+            if(map[ny][nx] == 1 && visited[ny][nx] == 0) {  
+                visited[ny][nx] = visited[y][x] + 1  // bool 대신 1 증감, 최단거리 파악 가능
+                queue.add(Pair(ny, nx))  
+            }  
+        }  
+    }  
+}
+```
+
+
+dfs vs bfs 시간복잡도 차이는 없음. 
+위에 명시한 인접리스트 또는 인접행렬인지에 따른 차이 뿐.
+dfs는 메모리를 덜 쓰고 코드 더 짧음. (완전탐색, SCC, 절단점 등을 구할 수 있음)
+bfs는 메모리를 더 쓰고 가중치 같을 때 최단 거리 구할 수 있음.
