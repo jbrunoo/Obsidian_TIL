@@ -202,3 +202,33 @@ dfs vs bfs 시간복잡도 차이는 없음.
 위에 명시한 인접리스트 또는 인접행렬인지에 따른 차이 뿐.
 dfs는 메모리를 덜 쓰고 코드 더 짧음. (완전탐색, SCC, 절단점 등을 구할 수 있음)
 bfs는 메모리를 더 쓰고 가중치 같을 때 최단 거리 구할 수 있음.
+
+- - -
+순회(order; 보통 이진 트리 기준 설명, 이진 트리 아니여도 적용 가능)
+
+후위(post) : 왼 - 오 - 자신
+```kotlin
+postOrder(node)
+	if(node.visited == false)
+		order(node -> left)
+		order(node -> right)
+		node.visited = true
+```
+전위 (pre) : 자신 - 왼 - 오 (DFS)
+
+```kotlin
+preOrder(node)
+	if(node.visited == false)
+		node.visited = true
+		order(node -> left)
+		order(node -> right)
+```
+중위(in) : 왼 - 자신 - 오
+
+```kotlin
+inOrder(node)
+	if(node.visited == false)
+		order(node -> left)
+		node.visited = true
+		order(node -> right)
+```

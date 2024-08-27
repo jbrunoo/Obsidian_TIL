@@ -6,7 +6,6 @@ Long(-2^63..2^63 -1 (-992경..992경)) - 8 바이트
 
 ### Unsigned integer types
 
-
 ### Boolean
 
 ### Characters
