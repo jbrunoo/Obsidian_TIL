@@ -102,4 +102,69 @@ savedStateHandle 사용 이유. 값 저장도 있고 navigation과 함께 인수
 
 지금까지는 navigation에서 navBackStackEntry에서 arguments로 넘겨줬는데
 깊은 로직까진 모르겠지만 viewmodel savedStateHandle에 navBackStackEntry 정보도 함께 접근할 수 있는 것 같다. 
+=> 이유를 이제 알았다. viewmodel은 보통 생명주기가 activity의 시작과 끝을 함께하는데 그것은 viewModel 내부에viewModelStoreOwner가 존재하고 이는 ComponentActivity, Fragment, NavBackStackEntry의 서브클래스이다. 즉, viewModelProvider가 viewModelStoreOwner를 통해 viewModel을 관리하고 접근.
 
+즉, compose에서 comsable 단위로 viewmodel 생명주기를 사용할 수 없지만 navBackStackEntry를 활용해서 각각의 viewmodel을 사용하거나 nestedNavigation을 이용하여 일종의 sharedViewModel을 구현할 수도 있다.
+
+```kotlin
+@Composable
+inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(navController: NavController): T {
+    val navGraphRoute = destination.parent?.route ?: return viewModel()
+    val parentEntry = remember(this) {
+        navController.getBackStackEntry(navGraphRoute)
+    }
+    return viewModel(parentEntry)
+}
+
+@Composable
+NavHost(
+        modifier = modifier,
+        navController = navController,
+        startDestination = AuthScreen.Auth.route
+    ) {
+        navigation(
+            startDestination = MainScreen.Home.route,
+            route = MainScreen.Main.route
+        ) {
+            composable(MainScreen.Home.route) {
+                val viewModel = it.sharedViewModel<HomeViewModel>(navController)
+                HomeScreen(viewModel)
+            }
+            composable(MainScreen.MyPage.route) {
+                val viewModel = it.sharedViewModel<HomeViewModel>(navController)
+                DetailScreen(viewModel)
+            }
+    }
+}
+```
+출처 : https://velog.io/@kej_ad/Android-Compsoe-Jetpack-Navigation-Nested-Graph%EC%99%80-Shared-ViewModel
+
+hilt를 사용중이었다면 [공식문서](https://developer.android.com/develop/ui/compose/libraries?hl=ko#hilt-navigation)에 따라 
+```kotlin
+NavHost(navController, startDestination = startRoute) {
+        navigation(startDestination = innerStartRoute, route = "Parent") {
+            // ...
+            composable("exampleWithRoute") { backStackEntry ->
+                val parentEntry = remember(backStackEntry) {
+                    navController.getBackStackEntry("Parent")
+                }
+                val parentViewModel = hiltViewModel<ParentViewModel>(parentEntry)
+                ExampleWithRouteScreen(parentViewModel)
+            }
+        }
+    }
+```
+parent Id를 통해 얻은 backStackEntry를 viewModelStoreOwner로 설정.
+
+```kotlin
+@Composable
+inline fun <reified VM : ViewModel> hiltViewModel(
+    viewModelStoreOwner: ViewModelStoreOwner = checkNotNull(LocalViewModelStoreOwner.current) {
+        "No ViewModelStoreOwner was provided via LocalViewModelStoreOwner"
+    },
+    key: String? = null
+): VM {
+    val factory = createHiltViewModelFactory(viewModelStoreOwner)
+    return viewModel(viewModelStoreOwner, key, factory = factory)
+}
+```
