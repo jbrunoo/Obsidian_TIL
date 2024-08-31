@@ -16,3 +16,9 @@ sumOf는 인라인 함수이나 selector 람다가 인라이닝 되지 않아서
 
 
 [kotlin 입출력](https://uknowblog.tistory.com/434)
+
+StringTokenizer vs StreamTokenizer
+전자가 편의성이 좋고 후자가 좀 더 빠르다고 함
+후자 관련 [블로그](https://blog.naver.com/ohho7942/80054842596) 를 통해 StreamTokenizer는 nextToken() 호출 후 ttype, sval, nval 변수에서 값을 읽을 수 있음
+
+with, run 스코프함수를 이용하면 메서드 자체로 접근가능 두 스코프 함수의 기능 차이는 없음
