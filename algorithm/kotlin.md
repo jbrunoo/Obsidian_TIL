@@ -14,6 +14,7 @@ val even = num_list.filterIndexed {i, _ -> i % 2 != 0 }.sum()
 ```
 sumOf는 인라인 함수이나 selector 람다가 인라이닝 되지 않아서 발생할 것이라고 추측.
 
+- - -
 
 [kotlin 입출력](https://uknowblog.tistory.com/434)
 
@@ -22,3 +23,6 @@ StringTokenizer vs StreamTokenizer
 후자 관련 [블로그](https://blog.naver.com/ohho7942/80054842596) 를 통해 StreamTokenizer는 nextToken() 호출 후 ttype, sval, nval 변수에서 값을 읽을 수 있음
 
 with, run 스코프함수를 이용하면 메서드 자체로 접근가능 두 스코프 함수의 기능 차이는 없음
+
+- - -
+HashMap은 순서를 보장하지 못함. LinkedHashMap, mutableMap은 sort 후에도 보장
