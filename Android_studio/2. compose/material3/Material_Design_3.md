@@ -33,3 +33,34 @@ Scaffold 이용.
 
 	색 구성표 생성
 	맞춤 Color
+
+
+color.kt, theme.kt를 custom 또는 색상 빌드 도구를 활용하여 바꿀 수 있음
+default 색상이 앱 테스트 시 바뀌지 않는 [원인](https://stackoverflow.com/questions/78526697/how-to-change-the-default-color-of-button-in-jetpack-compose)은 Android 12 이상 테스트할 경우 지정된 색 구성표를 따르지 않음.
+또한 동적 색상 구성표를 사용하지 않으면 해결됨. 
+
+```kotlin
+// 1. 이 부분을 false로 설정하거나
+// Dynamic color is available on Android 12+  
+dynamicColor: Boolean = true,
+
+// 2. dynamicColor를 사용하지 않으면 됨.
+val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+
+// 제거
+val colorScheme = when {
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+```
+
+[시맨틱 네이밍의 중요성](https://jin-na.tistory.com/entry/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%BB%AC%EB%9F%AC-%EB%84%A4%EC%9D%B4%EB%B0%8D-%EC%A0%95%ED%95%98%EA%B8%B0)
+
