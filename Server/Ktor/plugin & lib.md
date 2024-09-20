@@ -15,3 +15,20 @@ h2 db
 	h2는 인메모리 db. application에서 접근 가능함. 별도의 클라이언트로 접근하려면 위처럼 서버에 띄워야 함.
 
 HikariCP(connection pool) db와 연결될 자원의 풀을 무한정이 아닌 효율적으로 제어하기 위함
+Koin - DI
+```kotlin
+val appModule = module {  
+    single { CafeMenuRepository(CafeMenuTable) }  
+    single { CafeUserRepository(CafeUserTable) }  
+    single { CafeOrderRepository(CafeOrderTable) }  
+  
+    single { MenuService(get()) }  
+}  
+  
+fun Application.configureDependencyInjection() {  
+    install(Koin) {  
+        slf4jLogger()  
+        modules(appModule)  
+    }   
+}
+```
