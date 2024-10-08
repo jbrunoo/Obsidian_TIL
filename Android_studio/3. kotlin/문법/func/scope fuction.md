@@ -44,6 +44,8 @@ inline fun <T,R> T.run(block : T.() -> R) : R {
 	확장 함수이기 때문에 receive(this) 이용 가능
 	safe call을 통해 non-null일 때만 실행 가능
 
+	ps. forEach문은 for문과 다르게 람다식이기 때문에 continue, break 사용할 수 없는데 run을 이용하여 처리하는 방법이 있다. run label@ { return@label }
+
 
 	let
 

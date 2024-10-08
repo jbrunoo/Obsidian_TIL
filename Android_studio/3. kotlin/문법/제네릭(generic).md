@@ -69,3 +69,14 @@ class MyClass<T> {
 }
 
 ```
+
+
+
+- - -
+#### reified 키워드
+	구체화하다 라는 뜻.
+	런타임 시 불분명한 타입을 구체화 한다고 이해하면 된다.
+	generic, inline fun, reified 함께 이해하는게 좋을 듯함. 
+[[inline function]] 참고
+
+[generic & reified 참고 블로그](https://jaeyeong951.medium.com/kotlin-generic-%ED%83%80%EC%9E%85-reified-1726e9a23d40)
