@@ -38,5 +38,12 @@ defaults delete com.apple.dock autohide && defaults delete com.apple.dock autohi
 #### 이전 작업 파일 보기
 cmd + E
 
-#### for 문 숏컷
-iter
+#### 숏컷
+for문 : iter, @composable func : comp, @Preview : prev
+
+#### jetbrains 사 에디터 (안스, 인텔리제이)
+view - appearance - compact mode 조금 더 에디터 부분 화면 확장
+
+#### tool 창들 전체 닫음
+(m1은 Fn) cmd + shift + F12
+하나씩 닫을 땐 shift + esc
