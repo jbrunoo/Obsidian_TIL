@@ -1,3 +1,5 @@
+[공식문서 returns and jumps](https://kotlinlang.org/docs/returns.html#return-to-labels)
+kotlin의 모든 표현식에는 라벨을 설정할 수 있다.
 
 forEach 람다식에서 break, continue 사용 방법 - scope func run + label@ 활용
 ```kotlin
@@ -23,3 +25,9 @@ fun main() {
 }
 ```
 
+scope 없이도 가능
+```kotlin
+list.forEach li@ {
+	return@li
+}
+```

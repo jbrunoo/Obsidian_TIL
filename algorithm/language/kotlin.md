@@ -26,3 +26,7 @@ with, run 스코프함수를 이용하면 메서드 자체로 접근가능 두 �
 
 - - -
 HashMap은 순서를 보장하지 못함. LinkedHashMap, mutableMap은 sort 후에도 보장
+
+- - -
+[참고 블로그](https://toonraon.tistory.com/56) [kotlin 나누기 vs 비트연산](https://jakewharton.com/which-is-better-on-android-divide-by-two-or-shift-by-one/)
+이진탐색 구현 시, 자바 및 코틀린에서는 나누기와 비트 연산의 차이가 없다고 함.
