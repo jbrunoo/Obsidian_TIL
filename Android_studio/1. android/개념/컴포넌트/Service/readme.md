@@ -11,3 +11,4 @@
 
 
 [참고 블로그](https://alnova2.tistory.com/1106)
+[10분 테코톡 service](https://www.youtube.com/watch?v=GnQu_KW3suI)
