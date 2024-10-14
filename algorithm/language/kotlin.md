@@ -30,3 +30,13 @@ HashMap은 순서를 보장하지 못함. LinkedHashMap, mutableMap은 sort 후�
 - - -
 [참고 블로그](https://toonraon.tistory.com/56) [kotlin 나누기 vs 비트연산](https://jakewharton.com/which-is-better-on-android-divide-by-two-or-shift-by-one/)
 이진탐색 구현 시, 자바 및 코틀린에서는 나누기와 비트 연산의 차이가 없다고 함.
+
+- - -
+얇은 복사 vs 깊은 복사
+얇은 복사는 복사하는 대상의 주소를 참조. 즉, 원본과 복사한 객체는 값 변경 시 함께 변화.
+깊은 복사는 값 전체가 복사.
+
+mutable한 객체(primitive 타입이 아닌 경우, list, set, map 등)는 그대로 할당하면 얇은 복사가 일어남.
+깊은 복사를 위해서 클래스에서 clone() 함수를 오버라이딩 하거나, data class를 쓸 수 있지만 이 또한 primitive 타입에만 가능. 
+즉, 깊은 복사는 결국 객체를 새로 생성해주어야 함. 직렬, 역직렬 하는 방식도 있긴 함.
+예로 list.toList()로 깊은 복사를 할 수 있는데 toList의 구현을 보면 iterable하게 다시 리스트를 만드는 것을 확인할 수 있다.
