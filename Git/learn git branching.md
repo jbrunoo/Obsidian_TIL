@@ -11,8 +11,7 @@ git reset HEAD~1 : local용
 git revert : remote용
 
 
-
-
+- - -
 advanced
 git cherry-pick <\commit1> <\commit2> ...
 	현재 위치 아래에 있는 일련의 커밋들에 대한 복사본을 만듦
@@ -41,3 +40,5 @@ ex2) 커밋1 커밋2 진행하다가 커밋1의 내용을 수정하고 싶을 �
 git tag 
 git describe <\ref>
 
+- - -
+[서브 모듈과 서브 트리](https://jammdev.tistory.com/111)
