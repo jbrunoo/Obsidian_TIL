@@ -5,10 +5,11 @@
 * What went wrong:
 An exception occurred applying plugin request [id: 'com.captures2024.soongan.application']
 > Failed to apply plugin 'com.captures2024.soongan.application'.
-   > null cannot be cast to non-null type kotlin.String
+   > null cannot be cast to non-null type kotlin.String // 쎄한 메세지
 ```
 
-단순 빌드이기 때문에 gitigonore 파일과는 상관 없어 보이고 gradle 버전 문제일 가능성이 제일 높다.
+단순 빌드이기 때문에 gitigonore 파일과는 상관 없어 보이고 gradle 버전 문제일 가능성이 제일 높다.(대부분 경우)
+결론) ^^ **gitignore 파일 때문이였다**. ^^
 gradle-wrapper.properties 파일을 보면
 `distributionUrl=https\://services.gradle.org/distributions/gradle-8.6-bin.zip` 을 사용중.
 저기서 변경도 되지만 command + ; 누르면 쉽게 접근 가능.
@@ -32,7 +33,7 @@ Process command line: /Users/jbrunoo/Library/Java/JavaVirtualMachines/openjdk-21
 ```
 
 클린 빌드를 수행하자 `/Users/jbrunoo/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home/bin/java ` 메시지가 보이기 시작했다.
-클론한 프로젝트는 JAVA_17 환경인데 21을 사용했기 때문에 그 이상이라 문제가 없을 줄 알았다.
+클론한 프로젝트는 JAVA_17 환경인데 jdk 21을 사용했기 때문에 그 이상이라 문제가 없을 줄 알았다.
 어쨌든 충돌나는 부분이 있겠거니 17로 변경 중..
 
 setting - gradle 에서 17로 내리는 것은 동작하지 않았다.
@@ -45,6 +46,11 @@ java -version   // 현재 자바 버전
 ```
 
 mac os는 shell에 맞게끔 환경변수를 편집해주어야 한다. 
-zsh를 이용중인데 bash로 업데이트 해서 적용이 잘안됐음. [참고 블로그](https://velog.io/@may_yun/Mac-M1-Java-%EB%B2%84%EC%A0%84-%EB%B3%80%EA%B2%BD)
+zsh를 이용중인데 bash로 업데이트 해서 적용이 계속 안되더라. [참고 블로그](https://velog.io/@may_yun/Mac-M1-Java-%EB%B2%84%EC%A0%84-%EB%B3%80%EA%B2%BD)
 
-그리고 결론은 jdk 버전과 상관없이 해결되지 않았음.
+그리고 jdk 버전과 상관없이 해결되지 않았음.
+
+결국 돌고돌아..
+구글링과 gpt를 열심히 찾아봤는데 당연하게도 null cast 관련 gradle 오류의 공유가 있을리 만무했다.
+빌드가 되지 않았고 멀티 모듈에 대한 이해가 적었기 때문에 앱 모듈 플러그인에서 발생한 문제를 타고타고 수작업으로 찾아 들어갔다.. build-logic, buildSrc 파일이 각각 있어서 순서대로 application plugin 관련 내용들을 찾다보니
+그 안에 default config로 kakaoApiKey 받는 곳이 있었다.. local.properties key 값을 추가해서 해결해주었다.
