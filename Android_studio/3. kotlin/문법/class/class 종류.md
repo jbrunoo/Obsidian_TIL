@@ -5,8 +5,9 @@ abstract class vs interface
 	위 두 클래스를 상속받으면 하위 멤버들을 구현해야 함.
 	공통점은 둘 다 하위 클래스의 구현을 위해 정의하는 클래스이며 객체를 생성할 수 없음.
 	차이점은 abstract class만 생성자를 가질 수 있고 interface는 불가능.
+	이어 추상 클래스만 [[백킹 필드]]를 가질 수 있음
 	또한, 하위 클래스가 abstract class는 하나만 상속 가능하고 interface는 여러 개 상속 받을 수 있음
-	
+	[참고블로그](https://interlude.tistory.com/15)
 
 - - - 
 enum class
