@@ -19,7 +19,7 @@ MVI 구현을 위해 선택할 수 있는 라이브러리
 Mavericks, MVIKotlin, Orbit, Redux-Kotlin, Roxie, Uniflow
 
 - - -
-MVVM과 구현에서의 차이는 viewModel에서 상태와 이벤트(액션) 관리를 어떻게 하는지에서 나타남
+MVVM과 실제 구현에서의 차이는 viewModel에서 상태와 이벤트(액션) 관리를 어떻게 하는지에서 나타남
 
 MVVM에서 state를 각각 언더바를 이용하여 하나씩 정의해주었다면
 MVI에서는 data/sealed class로 state, sealed interface로 이벤트/액션을 정의해줌
