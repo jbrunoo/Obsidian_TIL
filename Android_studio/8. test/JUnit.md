@@ -30,3 +30,6 @@ ps. @CsvSource
 void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
 ```
 
+[ParameterizedTest 참고 블로그](https://velog.io/@ohzzi/junit5-parameterizedtest)
+여러 Source가 있는데 @MethodSource 활용하면 복잡한 객체, 리스트 등 전달 가능.
+인수로 제공하려는 메서드를 만들어야하는데 정적 메서드만 가능해서 코틀린에서는 @JvmStatic 붙여주자.
