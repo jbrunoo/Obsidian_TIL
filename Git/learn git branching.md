@@ -40,5 +40,35 @@ ex2) 커밋1 커밋2 진행하다가 커밋1의 내용을 수정하고 싶을 �
 git tag 
 git describe <\ref>
 
+
+```
+~/kotlin-lotto-7 jbrunoo +2 !2 ❯ git rebase -i HEAD~3                                                                                                                    05:02:24
+error: rebase 할 수 없습니다: 인덱스에 커밋하지 않은 변경 사항이 있습니다.
+error: 커밋하거나 스태시에 넣으십시오.
+
+~/kotlin-lotto-7 jbrunoo +1 ❯ git stash                                                                                                                                  16:54:12
+Saved working directory and index state WIP on jbrunoo: c0ec8bc refactor: 상수 값 추가 분리
+
+~/kotlin-lotto-7 jbrunoo *1 ❯ git rebase -i HEAD~3                                                                                                                       16:55:19
+[HEAD 분리됨 2d8355a] refactor: 상수 값 분리
+ Date: Mon Nov 4 16:45:37 2024 +0900
+ 7 files changed, 48 insertions(+), 19 deletions(-)
+ create mode 100644 src/main/kotlin/lotto/constants/Constants.kt
+ create mode 100644 src/main/kotlin/lotto/constants/Exceptions.kt
+Successfully rebased and updated refs/heads/jbrunoo.
+
+~/kotlin-lotto-7 jbrunoo *1 ❯ git stash pop                                                                                                                      14m 59s 17:10:50
+현재 브랜치 jbrunoo
+커밋할 변경 사항:
+  (use "git restore --staged <file>..." to unstage)
+        새 파일:       src/main/kotlin/lotto/service/LottoService.kt
+
+Dropped refs/stash@{0} (01c4255e69f9ad063b6ad0213a6dbb1165ab2fe3)
+```
+상수 값 분리를 꼼꼼히 안해서 3번 연속 커밋을 해버렸다.
+rebase 실행 전, 변경된 파일이 없어야 한다.
+그래서 커밋하거나 스태시에 넣으라는 에러가 떴다.
+git stash -> 작업 -> git stash pop 을 통해 작업 내용을 임시 저장해둘 수 있다.
+
 - - -
 [서브 모듈과 서브 트리](https://jammdev.tistory.com/111)
