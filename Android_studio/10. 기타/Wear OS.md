@@ -96,3 +96,17 @@ connected to 192.168.0.5:40535
 ```
 
 ps. [유튜브](https://www.youtube.com/watch?v=mnYKta1I0PU) 폰 연결도 같음. 폰에서 0은 최상위 폴더 의미.
+
+- - -
+macOs
+안스 기본 terminal이 zsh로 바뀌었다. 내가 설정한 건지 업데이트하면서 자동으로 된건지..
+하여튼 adb를 bash에서 환경변수로 설정해주었는데 zsh로 바뀌어서 그런 것 같다. [bash vs zsh](https://www.youtube.com/watch?v=VNF3BAEIUYs)
+```
+# 여기 폴더에 있음
+cd /Users/jbrunoo/Library/Android/sdk/platform-tools 
+
+# ./adb로만 호출해주면 됨. 귀찮으면 얼른 환경변수 설정을 하자.
+jbrunoo@jeonghalim-ui-MacBookPro platform-tools % ./adb devices
+List of devices attached
+emulator-5554   device
+```
