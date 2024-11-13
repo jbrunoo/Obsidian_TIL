@@ -180,6 +180,7 @@ if문에 쓰인 limitTime은 PlayScreen 전체를 recomposition
 TimerLayout 안의 limitTime은 Column을 recomposition
 즉, ContentCarousel도 recomposition 됨~~
 => 정정 Column, Row, Box 등 기초 component들은 실제로 인라인 함수이며 restart하는 범위가 아님.
+=> 즉, TimeLayout을 가지고 있는 playscreen이 영향 받음.
 ```kotlin
 if(limitTime.value == 0L) showResultDialog = true
 
