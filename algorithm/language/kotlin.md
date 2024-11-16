@@ -43,12 +43,35 @@ mutable한 객체(primitive 타입이 아닌 경우, list, set, map 등)는 그�
 - - -
 [코틀린 코드 실행 시간을 재보자](https://dev-sia.tistory.com/26)
 `System.currentTimeMillis()`말고 `System.nanoTime()` 쓰자.
-또는 java가 아닌 kotlin API를 사용해보자.
+또는 java가 아닌 kotlin API를 사용해보자. 
 ```kotlin
-import kotlin.time.measureTime // Kotlin.time에 있음
+import kotlin.system.measureNanoTime // Kotlin.time에 있음
 
-val mt = measureTime {
+val mt = measureNanoTime {
 	// CODE
 }
 print(mt)
+
+fun main() {
+    val measuredTime = measureNanoTime {
+        StreamTokenizer(System.`in`.bufferedReader()).run {
+            fun i(): Int { nextToken(); return nval.toInt() }
+            val n = i(); val m = i()
+            val arr = Array(n) { IntArray(m) { i() } }
+        }
+    }
+    print(measuredTime)
+
+
+    val measuredTime2 = measureNanoTime {
+        with(BufferedReader(InputStreamReader(System.`in`))) {
+            val (n, m) = readLine().split(" ").map { it.toInt() }
+            val arr = Array(n) { readLine().split(" ").map { it.toInt() }.toIntArray() }
+        }
+    }
+    print(measuredTime2)
+}
 ```
+
+measureTime 같은 메서드 있는데 보면 kotlin.time.measureTime에 속해있다.
+즉, 실행시간을 재는게 아닌 단순히 코드 시작 - 끝 시간을 비교하는 것.
