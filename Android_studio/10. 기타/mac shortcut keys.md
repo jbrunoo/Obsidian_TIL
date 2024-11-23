@@ -47,3 +47,7 @@ view - appearance - compact mode 조금 더 에디터 부분 화면 확장
 #### tool 창들 전체 닫음
 (m1은 Fn) cmd + shift + F12
 하나씩 닫을 땐 shift + esc
+
+#### 파일 찾기
+shift 2번(또는 command + O) 
+ps. All - Annotate 키워드 입력하면 깃과 연동하여 히스토리를 확인할 수 있음
