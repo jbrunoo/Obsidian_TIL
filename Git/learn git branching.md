@@ -72,3 +72,20 @@ git stash -> 작업 -> git stash pop 을 통해 작업 내용을 임시 저장�
 
 - - -
 [서브 모듈과 서브 트리](https://jammdev.tistory.com/111)
+
+
+
+- - -
+```git
+git restore . # 수정된 파일 초기화 
+git clean -fd # 삭제된 파일 복구 및 추적되지 않은 파일 제거
+```
+
+git restore가 동작하지 않는 경우
+```git
+# 작업 영역에 스테이징되어 있음. 삭제된 파일을 git 스테이징 영역에서 제거.
+git restore --staged <파일경로>
+git restore <파일경로>
+
+git status
+```
