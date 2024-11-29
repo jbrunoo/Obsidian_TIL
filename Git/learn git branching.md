@@ -89,3 +89,12 @@ git restore <파일경로>
 
 git status
 ```
+
+- - -
+
+github에서 pr 후 브랜치를 삭제해도 Android STudio IDE 내에서는 git에서 관리하는 브랜치가 남아있다.
+
+`git fetch --prune` 를 통해 동기화 할 수 있다.
+prune: 불필요한 가지를 치다.
+
+![[Pasted image 20241129153626.png]]
