@@ -12,3 +12,13 @@ cd 해당 repo
 tree
 copy tree
 ```
+
+github pr local로 가져와서 테스트 [참고 블로그](https://dirtycoders.net/check-out-github-pull-request-locally/)
+```
+// 직접 명령어로 가져오기
+git fetch origin pull/{num}/head:pr-{num}
+
+// fetch 시, pr까지 자동 등록
+// .git/config 파일 [remote = "origin"] 부분에 아랫줄 추가
+fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+```
