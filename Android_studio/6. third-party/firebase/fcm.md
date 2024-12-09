@@ -11,7 +11,6 @@ message type.
 알림 메시지 vs 데이터 메시지
 
 
-
 impl.
 manifest에 fcm service 추가
 	onNewToken에서 토큰 생성 후 저장 및 서버 전송 관리
