@@ -7,7 +7,7 @@ why use?
 직접 어플리케이션 서버에서 push를 보내주면 계속 연결이 지속되어야 함. -> 클라우드 메시징 서버를 경유.
 
 
-message type.
+message type. [공식문서](https://firebase.google.com/docs/cloud-messaging/concept-options?hl=ko)
 알림 메시지 vs 데이터 메시지
 
 
@@ -20,3 +20,15 @@ FirebaseMessaging.getInstance().token을 이용해서 명시적으로 현재 tok
 ex) 클라이언트에서 서버로 메시지 보내기, 알림 on/off 등
 
 api 13 이상부터 알림 권한 설정 필요
+
+
+
+
+- - -
+onNewToken 메서드 불리는 경우
+- 앱 설치
+- 앱 데이터 삭제 후 재설치
+- 토큰 갱신
+- 앱 보안 관련 설정 변경
+- 기기 설정 변경(구글 계정 추가/변경)
+
