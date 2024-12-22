@@ -19,3 +19,5 @@ lazy layouts이 효율적으로 동작하는 이유는 하위 컴포넌트의 �
 그 과정에서 subComposeLayout을 사용하기 때문에 IntrinsicSize와 충돌.
 
 내부 컴포넌트에서 IntrinsicSize를 활용하거나 LocalConfiguration을 활용해보자.
+
+ps. [xml을 compose로 전환하기 - 우아콘](https://www.youtube.com/watch?v=ryIXyhEZRYY) 영상 17:52초에 Quick Menu 개발 과정 중 subComposeLayout 활용한 부분 최근에 보게되서 추가.

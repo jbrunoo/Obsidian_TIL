@@ -21,9 +21,6 @@ ex) 클라이언트에서 서버로 메시지 보내기, 알림 on/off 등
 
 api 13 이상부터 알림 권한 설정 필요
 
-
-
-
 - - -
 onNewToken 메서드 불리는 경우
 - 앱 설치
@@ -32,7 +29,7 @@ onNewToken 메서드 불리는 경우
 - 앱 보안 관련 설정 변경
 - 기기 설정 변경(구글 계정 추가/변경)
 
-
 - - - 
 [android 공식문서]([공식문서](https://developer.android.com/develop/ui/views/notifications?hl=ko&_gl=1*1e4gv8i*_up*MQ..*_ga*MTYyNDA0NTE4MC4xNzMzODUwMDA1*_ga_6HH9YJMN9M*MTczMzg1MDAwNC4xLjAuMTczMzg1MDAwNC4wLjAuNzQxNDU0MjEz))
 알림 관련
+
