@@ -141,3 +141,7 @@ viewModel: todoViewModel = hiltViewModel() // hilt-navigation-compose 디펜던�
 
 
 ```
+
+
+- - -
+@HiltViewModel 어노테이션은 기본적으로 SaveStateHandle의 생성자 주입을 지원함.
