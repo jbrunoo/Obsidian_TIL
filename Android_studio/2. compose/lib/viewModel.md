@@ -106,6 +106,8 @@ savedStateHandle 사용 이유. 값 저장도 있고 navigation과 함께 인수
 
 즉, compose에서 comsable 단위로 viewmodel 생명주기를 사용할 수 없지만 navBackStackEntry를 활용해서 각각의 viewmodel을 사용하거나 nestedNavigation을 이용하여 일종의 sharedViewModel을 구현할 수도 있다.
 
+ps. @HiltViewModel 어노테이션은 기본적으로 SaveStateHandle의 생성자 주입을 지원함.
+
 ```kotlin
 @Composable
 inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(navController: NavController): T {
@@ -168,3 +170,7 @@ inline fun <reified VM : ViewModel> hiltViewModel(
     return viewModel(viewModelStoreOwner, key, factory = factory)
 }
 ```
+
+- - -
+viewModelScope는 내부적으로 CloseableCoroutineScope 에 SupervisorJob()이 있음.
+즉, child로만 예외 전파.
