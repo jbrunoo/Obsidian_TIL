@@ -235,3 +235,4 @@ recomposition에 대한 처리가 별로 없어서 이렇게 다 써야하는건
 
 With Option 1, you are right that It will be recomposed if 1 parameters changed but since Compose can intelligently recompose only the components that changed, you would not have problem.
 답변도 compose가 지능적으로 할 수 있다는 것이 .. 궁금하다
+ps. Gap Buffers를 사용하여 구축된 [슬롯 테이블을](https://medium.com/androiddevelopers/under-the-hood-of-jetpack-compose-part-2-of-2-37b2c20c6cdd) 사용하여 이를 내부적으로 지능적으로 처리한다고 함.
