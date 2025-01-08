@@ -168,3 +168,25 @@ object ApiModule {
     }
 }
 ```
+
+- - -
+[@MultiPart](https://square.github.io/retrofit/2.x/retrofit/retrofit2/http/Multipart.html) - 단일 요청에서 파일 업로드 및 여러 유형의 처리에 쓰인다.
+일반적으로 multipart/form-data 형식이 텍스트와 함께 이미지(바이너리 파일), 동영상 등을 같이 보낼 수 있음.
+파라미터에는 @Part 어노테이션을 붙인다.
+
+```kotlin
+@Multipart  
+@PATCH("members/profile")  
+suspend fun patchProfile(  
+    @Part("nickname") nickname: RequestBody?,  
+    @Part("selfIntroduction") selfIntroduction: RequestBody?,  
+    @Part profileImage: MultipartBody.Part?,  
+): Response<BaseResponse<PatchProfileResponse>>
+```
+
+@Part의 파라미터의 타입에 따라 사용 방식이 조금 다르다.
+RequestBody일 경우 contentType과 같이 사용. 어노테이션 이름 명시. - ex) ("nickname")
+MultipartBody.Part인 경우 content가 직접 사용. 어노테이션 이름 생략.
+다른 객체 타입인 경우, converter를 사용하고 어노테이션 이름 명시.
+
+ps. [[UriToFile]]

@@ -98,3 +98,20 @@ github에서 pr 후 브랜치를 삭제해도 Android STudio IDE 내에서는 gi
 prune: 불필요한 가지를 치다.
 
 ![[Pasted image 20241129153626.png]]
+
+
+- - -
+병합 후 커밋 메시지
+
+```
+git merge develop
+
+// confilcts가 발생하는 경우가 있다.
+// 보통 IDE 내에서 제공하는 툴을 이용하여 수정 후 병합하면 다시 add, commit, push 해주어야 하는데
+// 충돌이 없는 기존 경우처럼 Merge branch `develop` into xxx 에 그대로 합치고 싶다면,
+
+// 아래 방법 사용
+git add .
+git merge --continue
+```
+

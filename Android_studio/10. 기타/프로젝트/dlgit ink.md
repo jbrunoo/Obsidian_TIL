@@ -61,35 +61,6 @@ byteBuffer.putFloat(normalizedPixelValue)
 }  
 return byteBuffer  
 }  
-  
-  
-fun drawToBitmap(customPaths: List<CustomPath>): ImageBitmap {  
-val drawScope = CanvasDrawScope()  
-val size = Size(400f, 400f) // simple example of 400px by 400px image  
-val bitmap = ImageBitmap(size.width.toInt(), size.height.toInt())  
-val canvas = Canvas(bitmap)  
-  
-customPaths.forEach { customPath ->  
-val path = Path().apply {  
-moveTo(customPath.start.x, customPath.start.y)  
-lineTo(customPath.end.x, customPath.end.y)  
-}  
-val paint = Paint().apply {  
-color = customPath.color  
-alpha = customPath.alpha  
-}  
-canvas.drawPath(  
-path = path,  
-paint = paint  
-// color = customPath.color,  
-// alpha = customPath.alpha,  
-// style = Stroke(width = customPath.strokeWidth.toPx())  
-)  
-}  
-  
-return bitmap  
-}
-
 
 fun drawToBitmap(customPaths: List<CustomPath>): ImageBitmap {  
 val drawScope = CanvasDrawScope()  
