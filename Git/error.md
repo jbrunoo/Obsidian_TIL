@@ -18,3 +18,15 @@ $ eval "$(ssh-agent -s)"
 $ ssh-add -l -E sha256
 > 2048 SHA256:274ffWxgaxq/tSINAykStUL7XWyRNcRTlcST1Ei7gBQ /Users/USERNAME/.ssh/id_rsa (RSA)
 ```
+
+- - - 
+git pull 관련 에러
+```
+git pull
+설정에서 리모트의 'refs/heads/feature/SG-81-profile-connect-api' 레퍼런스와 병합하도록 지정했지만,
+그런 레퍼런스를 가져오지 않았습니다.
+```
+
+=> 해당 브랜치가 local에만 존재하고 remote에 없을 경우.
+해결법은 해당 브랜치를 remote에서 받아오는 것이지만,
+나의 경우는 pr 후 삭제된 브랜치고, 해당 로컬 브랜치를 checkout이나 삭제를 하지 않은 것이라서 다른 브랜치로 체크아웃했다. 나중에 브랜치는 일괄 정리할 예정.
