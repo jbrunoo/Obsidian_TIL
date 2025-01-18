@@ -11,6 +11,14 @@
 
 	보통 navGraph의 관리를 위해 NavGraphBuilder를 확장시켜 TopLevelDestinations 하위의 화면들을 관리하는데, 위 bottomBar가 필요한 경우에 대비해보기 위해 NavHost를 여러 개 만드는 것을 시도해보았다.(당연히 권장되지 않는 방법이다.) 상위 Scaffold 에서는 자유롭지만 여러 개의 navController가 생기면서 관리 및 화면 전환이 매우 어려워지고 꼬이게 된다. 사실상 불가능 하다..
 
+	TopLevelDestinations 처럼 bottomBar가 필요한 세부 화면들도 enum class로 정의하여,
+	비교하는 로직이 필요하다. `routeState.currentDestination?.hasRoute<HomeGalleryNavigator>() == true`  객체를 비교할 수 있는 hasRoute 함수가 존재한다.
+
+	bottomBar에서 세부화면 route로 들어갔을 때도 특정한 topLevelDestinations 중 하나로 지정해줘야 한다.
+	애초에 topLevel이 아니라 VisibleBottomBarDestination으로 한 번에 관리하는 것이 편리할 것 같다.
+	추후 도전 과제.
+
+
 
 2. bottomBar를 공유하지 않는 화면으로 전환 시, padding 이슈
 	Scaffold 내 innerPadding을 content에 넘겨주면 바텀 바가 없는 화면 전환 시, 바텀 바가 없는 부분에서 화면 전환이 일어남(즉, 전체화면에서 전환 되는 것이 아님) 이질감이 들 수 밖에 없다.
