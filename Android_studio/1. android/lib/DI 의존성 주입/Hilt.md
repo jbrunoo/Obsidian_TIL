@@ -141,3 +141,45 @@ viewModel: todoViewModel = hiltViewModel() // hilt-navigation-compose 디펜던�
 
 
 ```
+
+
+- - -
+@Assisted 관련 어노테이션
+[공식문서](https://dagger.dev/hilt/view-model.html)
+[참고 블로그](https://medium.com/@alexander.michaud/hiltviewmodel-assisted-injection-with-compose-a800723165bf)
+
+- history
+	기존 dagger에만 있던 기능. 1.2 이후 추가됨
+	hilt에 추가되었으나 hiltViewModel과 함께 사용 안되고 직접 di용 @EntryPoint interface를 선언하여 사용.
+	현재는 `@hiltViewModel(assistedFactory = MyViewModel.MyViewModelFactory::class)` 가능.
+
+
+- 언제 사용 하는지?
+	런타임에 동적인 값과 함께 vm을 생성할 경우.
+	compose-navigation을 활용하니 navigate하면서 값을 넘겨주는 것이 더 간결하고 보편적이라 사용할 경우가 거의 없었다.
+	navigation을 사용하지 않고 vm을 생성하는 경우나 navigate할 때 값을 넘겨주지 못하고 네트워크 호출로 가져온다거나 ..
+
+- 구현:
+@AssistedInject constructor 내에서 @Assisted 파라미터 추가 하고
+@AssistedFactory interface에서 create를 구현.
+```kotlin
+@HiltViewModel(assistedFactory = MyViewModel.MyViewModelFactory::class)
+class MyViewModel @AssistedInject constructor(
+    @Assisted private val myParam: Int,
+    private var repository: MyRepository
+): ViewModel() {
+    @AssistedFactory
+    interface MyViewModelFactory {
+        fun create(myParam: Int): MyViewModel
+    }
+    ...
+}
+```
+
+```kotlin
+val viewModel: MyViewModel = hiltViewModel(
+        creationCallback = { factory: MyViewModel.MyViewModelFactory -> 
+          factory.create(myParamValue) 
+        }
+    )
+```

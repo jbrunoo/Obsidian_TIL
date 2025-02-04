@@ -249,3 +249,14 @@ homeNavHost의 바텀 바를 eventNavHost에도 사용하고 싶었는데
 navhost가 다르기 때문에 startDestination을 보통 상위 루트 이름으로 지정하다보니
 composable의 경로와 달라지게 됨. 
 
+
+- - - 
+Type-Safe Navigation
+[공식문서](https://developer.android.com/guide/navigation/design/type-safety?hl=ko)
+
+Navigation 2.8.0 추가
+<>를 이용하여 data class 인스턴스 자체를 전달.
+```kotlin
+val info = savedStateHandle.toRoute<ReportNavigator.Check>()
+```
+
