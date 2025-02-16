@@ -183,3 +183,21 @@ val viewModel: MyViewModel = hiltViewModel(
         }
     )
 ```
+
+
+- - -
+같은 자료형의 di를 주입할 때
+ex) Retrofit을 주입하는데 다른 baseUrl이라면? 다른 okHttpClient를 가진다면? 
+Service를 만들기 위해 어떤 Retrofit을 사용할지 구분해주어야 한다.
+
+기존 Dagger에서는 @Named를 이용했다고 한다. (지금도 가능하다)
+Hilt에서는 @Qualifier를 활용한다. [공식문서](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko#multiple-bindings)
+
+```kotlin
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class AuthInterceptorOkHttpClient
+```
+
+hilt 자체가 런타임에 주입하는 것이 아니여서 그런지
+Retention의 scope로 BINARY 외에 SOURCE, RUNTIME도 있지만 공식문서에도 BINARY 경우만 작성되어 있다.
