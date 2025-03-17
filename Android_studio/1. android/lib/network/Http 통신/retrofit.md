@@ -67,6 +67,9 @@ fun getSubwayInfo(
 	객체를 key, value 형태의 JSON 문자열로 만들어 전송.
 	URL이 아닌 데이터 스트림으로 서버에 전송. ex) `{"userId" : "textId", "password" : "textPwd"}`
 
+	ps. @DELETE에 @Body를 사용할 수 없다. 보통은 query로 전송하나 @Body로 보내야할 경우,
+	`@HTTP(method = "DELETE", path = "경로", hasBody = true)` 해당 방식으로 정의해야 한다.
+
 5. @FormUrlEncoded
 	데이터를 URL 인코딩 형태로 만들어 전송할 때. (@POST와 함께, 위에 @Body는 JSON 전송)
 	전송된 데이터 ex) `userId=textId&password=textPwd`
