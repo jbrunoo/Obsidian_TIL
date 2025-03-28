@@ -102,7 +102,7 @@ leaderboardsClient.allLeaderboardsIntent를 활용하면 모든 리더보드를 
 이는 이후에 onActivityResult()에서 결과를 처리하는 과정에서 acitivty가 종료될 수 있기 때문에 
 deprecated 되었음.
 registerForActivityResult()를 공식문서에서 권장하는데 callback이 내장되어있다.
-이를 launcher로 사용한다.
+이 launcher로 사용한다.
 
 현재는 activity에 코드를 작성한게 아니라 아직 변경하지 않았다.
 
