@@ -11,10 +11,5 @@ network interceptor(addNetworkInterceptor) : OKHttp <-> server
 	header 추가하여 token, jwt 등 전달
 
 
-
-
-
-
 api interceptor에서 addQueryParameter -> addPathSegment 이용하여 api, json 등 path 추가했는데
 baseUrl  + pathSegment + endpoint 원했는데 baseUrl + endpoint + pathSegment 순으로 나옴.
-
