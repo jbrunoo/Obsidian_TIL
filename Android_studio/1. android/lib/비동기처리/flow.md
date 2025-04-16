@@ -200,3 +200,16 @@ ps. return@ 부분은 람다식에서 return 하기 위함.
 전자는 flow가 downstream에 be emitted 전에 코드 실행
 후자는 flow가 be collected 전에 실행
 
+- - -
+android에서 flow를 활용할 때, 주로 [stateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow?hl=ko#stateflow)를 사용하게 된다. (관찰 가능한 상태 홀더 흐름)
+
+값을 업데이트 하기 위해, emit / .value / update 방법을 가진다.
+
+- emit은 flow 생산자에서 값을 방출하는 기본적인 방법으로 suspend 안에서 실행됨.
+
+- value는 상태 홀더 객체에서 사용되는 프로퍼티로 emit과 기능적 일치하지만 suspend가 아닌 즉, 메인 스레드에서도 동기식으로 처리 가능하다.
+
+- update는 기존 객체 중 변경된 부분만을 갱신하고 해당 객체를 방출함. emit, value는 새로운 객체를 생성하고 방출
+
+but, 다중 스레드에서 value 업데이트는 원자성 문제 발생 가능.
+update를 사용하면, 이전 상태 값과 현재 상태 값을 비교하여 타 스레드에서 수정 시, 다시 루프를 진행함.
