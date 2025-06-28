@@ -2,6 +2,7 @@
 3주차 미션 중 발생했는데 그 이유는 [[Gradle's dependency cache may be corrupt]] 이거 작성하면서
 JDK 버전을 21에서 17로 낮추었기 때문이었다. 물론, 저것도 JDK와 관련 없었는데 낮춘 것..
 생각해보면 특별 케이스에 맞추지 않는 이상 높아서 문제가 되는 경우가 이상하지 않은가 ..
+- 한참 뒤 ./gradlew build에서 JDK Crash 나서 후에 17로 다시 낮춤
 
 하여튼 JDK 버전을 이미 변경해보아서 IDE와 환경변수를 편집해주었으나 해결되지 않았다.
 그 이유는 IDE 상단 Configuration 내용의 edit를 눌러보면 여전히 JDK가 이전 버전으로 설정되어 있었다.
