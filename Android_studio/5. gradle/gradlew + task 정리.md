@@ -3,3 +3,6 @@ gradle wrapper를 통해 모든 빌드 작업 수행 가능. [공식문서](http
 in mac
 `./gradlew 'task-name'
 
+
+- - -
+task 정리
