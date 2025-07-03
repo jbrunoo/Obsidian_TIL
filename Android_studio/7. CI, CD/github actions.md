@@ -60,3 +60,9 @@ jobs:
       - name: Run ktlintCheck
         run: ./gradlew ktlintCheck --no-daemon
 ```
+
+
+```
+# 터미널에서 base 64 인코딩 (txt 파일로 읽을 수 있게)
+openssl base64 -in [keystore file path]  -out [base64-file.txt]
+```
