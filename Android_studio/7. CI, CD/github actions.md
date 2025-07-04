@@ -61,8 +61,71 @@ jobs:
         run: ./gradlew ktlintCheck --no-daemon
 ```
 
+clean, --no-daemon은 CI 환경에서 필요없다는 의견이 현재는 많음
+첫 빌드 타임은 같지만 추가적인 새 커밋이 올라오면 계속 새로 빌드될 수 있음
 
 ```
 # 터미널에서 base 64 인코딩 (txt 파일로 읽을 수 있게)
 openssl base64 -in [keystore file path]  -out [base64-file.txt]
 ```
+
+
+- - -
+###  detekt report 파일 sarif 형식 병합
+
+```kotlin
+// 현재 root gradle.kts 일부
+... 
+
+val detektReportMergeSarif by tasks.registering(ReportMergeTask::class) {  
+    output.set(layout.buildDirectory.file("reports/detekt/merge.sarif"))  
+}  
+
+allprojects {  
+    apply {  
+        plugin(rootProject.libs.plugins.kotlin.detekt.get().pluginId)  
+        plugin(rootProject.libs.plugins.kotlin.ktlint.get().pluginId)  
+        plugin(rootProject.libs.plugins.gradle.dependency.handler.extensions.get().pluginId)  
+    }  
+  
+    afterEvaluate {  
+        extensions.configure<DetektExtension> {  
+            parallel = true  
+            buildUponDefaultConfig = true  
+            toolVersion = libs.versions.kotlin.detekt.get()  
+            config.setFrom(files("$rootDir/detekt-config.yml"))  
+        }  
+  
+        extensions.configure<KtlintExtension> {  
+            version.set(rootProject.libs.versions.kotlin.ktlint.source.get())  
+            android.set(true)  
+            verbose.set(true)  
+        }  
+
+		// https://ncorti.com/detekt/docs/introduction/changelog/#migration
+        // Merge detekt report to 'root/build/reports/detekt/marge.sarif'  
+        tasks.withType<Detekt>().configureEach {  
+            reports {  
+                sarif.required.set(true)  
+            }  
+            basePath = rootDir.absolutePath  
+            finalizedBy(detektReportMergeSarif)  
+        }  
+  
+        detektReportMergeSarif {  
+            input.from(tasks.withType<Detekt>().map { it.sarifReportFile })  
+        }  
+    }} 
+...
+```
+
+
+참고 
+gradle 코드
+https://github.com/detekt/detekt/blob/main/build.gradle.kts
+
+sarif 파일 병합 및 올리기
+detekt
+https://detekt.dev/docs/introduction/reporting/#merging-reports
+github 
+https://docs.github.com/ko/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
