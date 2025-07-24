@@ -10,3 +10,6 @@
 
 	Android SDK 플랫폼 도구 패키지에 포함, 위치 : android_sdk/platform-tools/
 
+
+- - -
+adb pair, connect를 통해 무선 연결을 시도하는데 겪었던 문제.
